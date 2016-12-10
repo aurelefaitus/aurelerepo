@@ -1,0 +1,90 @@
+<project xmlns:if="ant:if" xmlns:unless="ant:unless" name="build-jmeter">
+
+	<target name="runJmeter" description="Executes a suite of JMeter Performance tests.">
+		<!-- Delete Previous JMeter Results -->
+		<delete dir="${jmeter_results}" />
+		<mkdir dir="${jmeter_results}" />
+
+		<!-- Setup Class Path and JMeter Task To call -->
+		<path id="ant.jmeter.classpath">
+			<fileset dir="${jmeter_home}/extras">
+				<include name="ant-jmeter*.jar">
+				</include>
+			</fileset>
+		</path>
+
+		<condition property="host_url" value="${host_url}" else="">
+			<isset property="host_url" />
+		</condition>
+		<condition property="jmeter_results" value="${jmeter_results}" else="${user.dir}/target/jmeter-results">
+			<isset property="jmeter_results" />
+		</condition>
+		<condition property="host_env" value="${host_env}" else="">
+			<isset property="host_env" />
+		</condition>
+		<condition property="host_username" value="${host_username}" else="">
+			<isset property="host_username" />
+		</condition>
+		<condition property="host_password" value="${host_password}" else="">
+			<isset property="host_password" />
+		</condition>
+
+		<taskdef name="jmeter" classname="org.programmerplanet.ant.taskdefs.jmeter.JMeterTask" classpathref="ant.jmeter.classpath" />
+
+		<!-- Run the Tests -->
+		<jmeter jmeterhome="${jmeter_home}" resultlogdir="${jmeter_results}">
+			<testplans dir="${jmeter_tests}" includes="*.jmx" />
+			<jvmarg value="-Xincgc"/>
+    		<jvmarg value="-Xmx6144m"/>
+    		<jvmarg value="-Dproperty=value"/>
+			<jvmarg value="-Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=9010"/>
+			<jvmarg value="-Dcom.sun.management.jmxremote.local.only=false"/> 
+			<jvmarg value="-Dcom.sun.management.jmxremote.authenticate=false"/>
+			<jvmarg value="-Dcom.sun.management.jmxremote.ssl=false"/>
+			<property name="jmeter.save.saveservice.output_format" value="xml" />
+			<property name="jmeter.save.saveservice.assertion_results_failure_message" value="true" />
+			<property name="jmeter.save.saveservice.assertion_results" value="true" />
+			<property name="jmeter.save.saveservice.data_type" value="true" />
+			<property name="jmeter.save.saveservice.label" value="true" />
+			<property name="jmeter.save.saveservice.response_code" value="true" />
+			<property name="jmeter.save.saveservice.response_data.on_error" value="true" />
+			<property name="jmeter.save.saveservice.response_message" value="true" />
+			<property name="jmeter.save.saveservice.successful" value="true" />
+			<property name="jmeter.save.saveservice.thread_name" value="true" />
+			<property name="jmeter.save.saveservice.time" value="true" />
+			<property name="jmeter.save.saveservice.subresults" value="true" />
+			<property name="jmeter.save.saveservice.assertions" value="true" />
+			<property name="jmeter.save.saveservice.latency" value="true" />
+			<property name="jmeter.save.saveservice.samplerData" value="true" />
+			<property name="jmeter.save.saveservice.responseHeaders" value="true" />
+			<property name="jmeter.save.saveservice.requestHeaders" value="true" />
+			<property name="jmeter.save.saveservice.encoding" value="true" />
+			<property name="jmeter.save.saveservice.bytes" value="true" />
+			<property name="jmeter.save.saveservice.url" value="true" />
+			<property name="jmeter.save.saveservice.filename" value="true" />
+			<property name="jmeter.save.saveservice.hostname" value="true" />
+			<property name="jmeter.save.saveservice.thread_counts" value="true" />
+			<property name="jmeter.save.saveservice.sample_count" value="true" />
+			<property name="jmeter.save.saveservice.idle_time" value="true" />
+
+			<property name="user_directory" value="${user.dir}" />
+			<property name="jmeter_results" value="${jmeter_results}" />
+			<property name="host_env" value="${host_env}" />
+			<property name="host_url" value="${host_url}" />
+			<property name="host_username" value="${host_username}" />
+			<property name="host_password" value="${host_password}" />
+		</jmeter>
+	</target>
+
+	<target name="report">
+		<xslt basedir="${jmeter_results}" destdir="${jmeter_results}" includes="*.jtl" style="${jmeter_home}/extras/jmeter-results-detail-report_21.xsl" />
+		<copy todir="${jmeter_results}">
+			<fileset dir="${jmeter_home}/extras">
+				<include name="collapse.jpg" />
+				<include name="expand.jpg" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="runJmeterWithReport" depends="runJmeter, report" />
+</project>
