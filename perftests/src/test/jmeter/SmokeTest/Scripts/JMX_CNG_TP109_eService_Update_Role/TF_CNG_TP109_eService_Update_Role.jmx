@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_CNG_TP109_eService_Update_Role" enabled="true"/>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">SOAPAction</stringProp>
+              <stringProp name="Header.value">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">SSL_VERSION</stringProp>
+              <stringProp name="Header.value">TLS</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/soap+xml</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="TP109 - CSV Data Set Config" enabled="true">
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP109_eService_Update_Role${PATH_SEP}TP109.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">CLAIM_CONTACT_ROLE_PUBLIC_ID</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <stringProp name="TestPlan.comments">CLAIM_CONTACT_ROLE_PUBLIC_ID</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+          <stringProp name="ConstantTimer.delay">${CNG_TP109_eService_Update_Role_ThinkTime}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="PacingTime" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">${CNG_TP109_eService_Update_Role_Pacing}</stringProp>
+        </TestAction>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP109_010_eService_Update_Role" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:icon=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot;&gt;&#xd;
+		   &lt;soap:Header/&gt;&#xd;
+		   &lt;soap:Body&gt;&#xd;
+		      &lt;icon:updateRole&gt;&#xd;
+		         &lt;UpdateRoleRequest&gt;&#xd;
+		            &lt;RequestId&gt;&lt;/RequestId&gt;&#xd;
+		            &lt;Requestor&gt;eService&lt;/Requestor&gt;&#xd;
+		            &lt;UserID&gt;&lt;/UserID&gt;&#xd;
+		            &lt;Role&gt;&#xd;
+		               &lt;Id&gt;${CLAIM_CONTACT_ROLE_PUBLIC_ID}&lt;/Id&gt; &#xd;
+		               &lt;IncidentId&gt;&lt;/IncidentId&gt;&#xd;
+		               &lt;PolicyId&gt;&lt;/PolicyId&gt;&#xd;
+		               &lt;RoleName&gt;repairshop&lt;/RoleName&gt;&#xd;
+		               &lt;DirectionToPayInd&gt;true&lt;/DirectionToPayInd&gt;&#xd;
+		               &lt;CoveredPartyType&gt;&lt;/CoveredPartyType&gt;&#xd;
+		               &lt;WitnessPosition&gt;&lt;/WitnessPosition&gt;&#xd;
+		               &lt;Active&gt;true&lt;/Active&gt;&#xd;
+		               &lt;Comments&gt;Test text&lt;/Comments&gt;&#xd;
+		            &lt;/Role&gt;&#xd;
+		        &lt;/UpdateRoleRequest&gt;&#xd;
+		     &lt;/icon:updateRole&gt;&#xd;
+		  &lt;/soap:Body&gt;&#xd;
+&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP109_010_eService_Update_Role failed - HTTP 200 not received" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XML_ResponseStatusDescription" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">XML_ResponseStatusDescription</stringProp>
+            <stringProp name="RegexExtractor.regex">Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP109_010_eService_Update_Role failed - Error Desc - ${XML_ResponseStatusDescription}, CLAIM_CONTACT_ROLE_PUBLIC_ID - ${CLAIM_CONTACT_ROLE_PUBLIC_ID}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-65566366">Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

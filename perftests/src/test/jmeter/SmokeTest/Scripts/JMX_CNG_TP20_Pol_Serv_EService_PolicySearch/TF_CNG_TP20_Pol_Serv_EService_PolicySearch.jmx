@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_CNG_TP20_Pol_Serv_EService_PolicySearch" enabled="true"/>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">${CNG_TP20_Pol_Serv_EService_PolicySearch_Pacing}</stringProp>
+        </TestAction>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+          <stringProp name="ConstantTimer.delay">${CNG_TP20_Pol_Serv_EService_PolicySearch_ThinkTime}</stringProp>
+          <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 60s x 1000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="TP20 CSV Data Set Config" enabled="true">
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP20_Pol_Serv_EService_PolicySearch${PATH_SEP}TP20.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames">POLICY_NUMBER</stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TP20_010_PolServ_EService_PolSearch" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Pol_Serv_EService_PolcySearch" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:iac=&quot;http://pm.lmig.com/cl/PolicyServicesMediationModule/iAcordPolicySearch&quot;&gt;   &lt;soapenv:Header/&gt;   &lt;soapenv:Body&gt;      &lt;iac:policySearch&gt;&lt;ACORD xmlns:xml=&quot;http://www.w3.org/XML/1998/namespace&quot;					       xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;				  &lt;SignonRq&gt;    &lt;SignonPswd&gt;      &lt;CustId&gt;        &lt;SPName&gt;EService&lt;/SPName&gt;        &lt;CustPermId&gt;00001&lt;/CustPermId&gt;      &lt;/CustId&gt;      &lt;CustPswd&gt;        &lt;EncryptionTypeCd&gt;NONE&lt;/EncryptionTypeCd&gt;        &lt;Pswd&gt;Pswd&lt;/Pswd&gt;      &lt;/CustPswd&gt;    &lt;/SignonPswd&gt;    &lt;ClientDt&gt;2010-06-22T00:00:00.000+01:00&lt;/ClientDt&gt;    &lt;CustLangPref&gt;token&lt;/CustLangPref&gt;    &lt;ClientApp&gt;      &lt;Org&gt;Org&lt;/Org&gt;      &lt;Name&gt;Name&lt;/Name&gt;      &lt;Version&gt;token&lt;/Version&gt;    &lt;/ClientApp&gt;  &lt;/SignonRq&gt;  &lt;InsuranceSvcRq&gt;    &lt;RqUID&gt;00000000-0000-0000-0000-000000000000&lt;/RqUID&gt;    &lt;PolicyInqRq&gt;      &lt;RqUID&gt;00000000-0000-0000-0000-000000000000&lt;/RqUID&gt;      &lt;TransactionRequestDt&gt;2010-06-22T00:00:00.000+01:00&lt;/TransactionRequestDt&gt;      &lt;CurCd&gt;token&lt;/CurCd&gt;	&lt;AsOfDt&gt;2009-07-07&lt;/AsOfDt&gt;	      &lt;Requestor&gt;        &lt;ClaimsParty/&gt;      &lt;/Requestor&gt;      &lt;PolicyInqInfo&gt;        &lt;PartialPolicy&gt;          &lt;PolicyNumber&gt;${POLICY_NUMBER}&lt;/PolicyNumber&gt;          &lt;LOBCd&gt;PROP&lt;/LOBCd&gt;        &lt;/PartialPolicy&gt;      &lt;/PolicyInqInfo&gt;    &lt;/PolicyInqRq&gt;  &lt;/InsuranceSvcRq&gt;&lt;/ACORD&gt;      &lt;/iac:policySearch&gt;   &lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_POLICY}/PolicyServicesMediationModuleWeb/sca/EServicePolicySearchWSExport</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+            <boolProp name="HTTPSampler.image_parser">true</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">https://${GV_HOSTNAME_POLICY}/PolicyServicesMediationModuleWeb/sca/EServicePolicySearchWSExport</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">content-type</stringProp>
+                  <stringProp name="Header.value">text/xml+soap</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP20_010_PolServ_EService_PolSearch -HTTP Reponse 200 but unsucessful response returned for PolServ_EService_PolSearch  - ${POLICY_NUMBER}" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="1247216070">&lt;_xml:MsgStatusCd&gt;Success&lt;/_xml:MsgStatusCd&gt;</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+            <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP20_010_PolServ_EService_PolSearch -HTTP Reponse not 200 OK for ${POLICY_NUMBER}" enabled="true">
+              <collectionProp name="Asserion.test_strings">
+                <stringProp name="49586">200</stringProp>
+              </collectionProp>
+              <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+              <boolProp name="Assertion.assume_success">false</boolProp>
+              <intProp name="Assertion.test_type">16</intProp>
+            </ResponseAssertion>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

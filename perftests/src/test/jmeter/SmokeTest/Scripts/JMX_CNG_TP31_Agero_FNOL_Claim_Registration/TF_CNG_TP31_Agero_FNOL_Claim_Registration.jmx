@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_CNG_TP31_Agero_FNOL_Claim_Registration" enabled="true"/>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="TP31 - CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP31_Agero_FNOL_Claim_Registration${PATH_SEP}TP31.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">POLICYNUMBER,LM_AGREEMENTID,POL_EFF_DT,POL_EXP_DT,VIN,YEAR,MAKE,MODEL,REGISTRATIONID,VEHICLESTATE,ADDRESSLINE1,CITY,STATE,POSTALCODE,COUNTRY,PHONE_NUMBER</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <stringProp name="TestPlan.comments">POLICYNUMBER,LM_AGREEMENTID,POL_EFF_DT,POL_EXP_DT,VIN,YEAR,MAKE,MODEL,REGISTRATIONID,VEHICLESTATE,ADDRESSLINE1,CITY,STATE,POSTALCODE,COUNTRY,PHONE_NUMBER</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="Accept-Language" elementType="Header">
+              <stringProp name="Header.name">SOAPAction</stringProp>
+              <stringProp name="Header.value">https://${GV_HOSTNAME_FNOL}/FNOLServicesMediationModuleWeb/sca/SafeliteClaimRegistrationWSExport</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">text/xml; charset=utf-8</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+          <stringProp name="ConstantTimer.delay">${CNG_TP31_Agero_FNOL_Claim_Registration_ThinkTime}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="PacingTime" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">${CNG_TP31_Agero_FNOL_Claim_Registration_Pacing}</stringProp>
+        </TestAction>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP31_010_Agero_FNOL_Claim_Registration" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:iac=&quot;http://pm.lmig.com/cl/FNOLServicesMediationModule/iAcordClaimRegistration&quot;&gt;   &lt;soapenv:Header/&gt;   &lt;soapenv:Body&gt;      &lt;iac:claimRegistration&gt;&lt;ACORD&gt;&lt;SignonRq&gt;            &lt;SignonPswd&gt;                        &lt;CustId&gt;                                    &lt;SPName&gt;Crosscountry&lt;/SPName&gt;                                    &lt;CustPermId&gt;00008&lt;/CustPermId&gt;                        &lt;/CustId&gt;                        &lt;CustPswd&gt;                                    &lt;EncryptionTypeCd&gt;NONE&lt;/EncryptionTypeCd&gt;                                    &lt;Pswd&gt;Pswd&lt;/Pswd&gt;                        &lt;/CustPswd&gt;            &lt;/SignonPswd&gt;            &lt;ClientDt&gt;2010-06-22T00:00:00.000&lt;/ClientDt&gt;            &lt;CustLangPref&gt;token&lt;/CustLangPref&gt;            &lt;ClientApp&gt;                        &lt;Org&gt;Org&lt;/Org&gt;                        &lt;Name&gt;Name&lt;/Name&gt;                        &lt;Version&gt;token&lt;/Version&gt;            &lt;/ClientApp&gt;&lt;/SignonRq&gt;&lt;ClaimsSvcRq&gt;            &lt;RqUID&gt;20101221-0623-4700-0001-CCC000000000&lt;/RqUID&gt;            &lt;ClaimsNotificationAddRq&gt;                        &lt;RqUID&gt;20101221-0623-4700-0001-CCC000000000&lt;/RqUID&gt;                        &lt;TransactionRequestDt&gt;2010-06-22T00:00:00.000&lt;/TransactionRequestDt&gt;                        &lt;CurCd&gt;token&lt;/CurCd&gt;                        &lt;Policy&gt;                                    &lt;PolicyNumber&gt;${POLICYNUMBER}&lt;/PolicyNumber&gt;                                    &lt;LOBCd&gt;AUTOP&lt;/LOBCd&gt;                                    &lt;MiscParty&gt;                                                &lt;ItemIdInfo&gt;                                                            &lt;InsurerId&gt;${LM_AGREEMENTID}&lt;/InsurerId&gt;                                                &lt;/ItemIdInfo&gt;                                                &lt;GeneralPartyInfo&gt;                                                            &lt;Addr&gt;                                                                        &lt;StateProvCd&gt;NJ&lt;/StateProvCd&gt;                                                            &lt;/Addr&gt;                                                &lt;/GeneralPartyInfo&gt;                                    &lt;/MiscParty&gt;                        &lt;/Policy&gt;                        &lt;ClaimsOccurrence&gt;                                    &lt;ClaimsReported&gt;                                                &lt;ReportedDt&gt;${__time(yyyy-MM-dd)}T00:00:00.000&lt;/ReportedDt&gt;                                                &lt;ReportNumber&gt;${REPORT_NUMBER}&lt;/ReportNumber&gt;                                    &lt;/ClaimsReported&gt;                                    &lt;LossDt&gt;${DateOfLoss}&lt;/LossDt&gt;				&lt;DamageDesc&gt;GAS&lt;/DamageDesc&gt;                                    &lt;LossTime&gt;13:32:00&lt;/LossTime&gt;                                    &lt;Addr&gt;                                                &lt;Addr1&gt;${ADDRESSLINE1} MILLS RD&lt;/Addr1&gt;                                                &lt;City&gt;${CITY}&lt;/City&gt;                                                &lt;StateProvCd&gt;${STATE}&lt;/StateProvCd&gt;                                                &lt;PostalCode&gt;${POSTALCODE}&lt;/PostalCode&gt;                                    &lt;/Addr&gt;                        &lt;/ClaimsOccurrence&gt;                        &lt;ClaimsParty&gt;                                    &lt;GeneralPartyInfo&gt;                                                &lt;NameInfo&gt;                                                            &lt;PersonName&gt;                                                                        &lt;Surname&gt;Louie&lt;/Surname&gt;                                                                        &lt;GivenName&gt;Lee&lt;/GivenName&gt;                                                            &lt;/PersonName&gt;                                                &lt;/NameInfo&gt;                                                &lt;Addr&gt;                                                            &lt;Addr1&gt;${ADDRESSLINE1}&lt;/Addr1&gt;                                                            &lt;City&gt;${CITY}&lt;/City&gt;                                                            &lt;StateProvCd&gt;${STATE}&lt;/StateProvCd&gt;                                                            &lt;PostalCode&gt;${POSTALCODE}&lt;/PostalCode&gt;                                                            &lt;Country&gt;${COUNTRY}&lt;/Country&gt;                                                &lt;/Addr&gt;&lt;Communications&gt;            &lt;PhoneInfo&gt;                        &lt;CommunicationUseCd&gt;Home&lt;/CommunicationUseCd&gt;                        &lt;PhoneNumber&gt;+${PHONE_NUMBER}&lt;/PhoneNumber&gt;            &lt;/PhoneInfo&gt;&lt;/Communications&gt;                                    &lt;/GeneralPartyInfo&gt;                                    &lt;PersonInfo&gt;                                                &lt;GenderCd&gt;M&lt;/GenderCd&gt;                                    &lt;/PersonInfo&gt;                                    &lt;ClaimsPartyInfo&gt;                                                &lt;RelationshipToInsuredCd&gt;IN&lt;/RelationshipToInsuredCd&gt;                                    &lt;/ClaimsPartyInfo&gt;                        &lt;/ClaimsParty&gt;                        &lt;AutoLossInfo id=&quot;idvalue0&quot;&gt;                                    &lt;VehInfo&gt;                                                &lt;ItemIdInfo&gt;                                                            &lt;InsurerId&gt;1&lt;/InsurerId&gt;                                                &lt;/ItemIdInfo&gt;                                                &lt;Manufacturer&gt;${MAKE}&lt;/Manufacturer&gt;                                                &lt;Model&gt;${MODEL}&lt;/Model&gt;                                                &lt;ModelYear&gt;${YEAR}&lt;/ModelYear&gt;                                                &lt;Registration&gt;                                                            &lt;RegistrationId&gt;${REGISTRATIONID}&lt;/RegistrationId&gt;                                                            &lt;StateProvCd&gt;${VEHICLESTATE}&lt;/StateProvCd&gt;                                                &lt;/Registration&gt;                                                &lt;VehIdentificationNumber&gt;${VIN}&lt;/VehIdentificationNumber&gt;                                    &lt;/VehInfo&gt;                                    &lt;DamageDesc&gt;Towing And Labor&lt;/DamageDesc&gt;                        &lt;/AutoLossInfo&gt;                        &lt;RemarkText IdRef=&quot;idvalue0&quot;&gt;Claim Note Text&lt;/RemarkText&gt;            &lt;/ClaimsNotificationAddRq&gt;&lt;/ClaimsSvcRq&gt;&lt;/ACORD&gt;      &lt;/iac:claimRegistration&gt;   &lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_FNOL}/FNOLServicesMediationModuleWeb/sca/CrosscountryClaimRegistrationWSExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="RandDate" enabled="true">
+            <stringProp name="maximumValue">30</stringProp>
+            <stringProp name="minimumValue">1</stringProp>
+            <stringProp name="outputFormat">0</stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">RandDate</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="DateOfLoss - TP31_010_Agero_FNOL_Claim_Registration" enabled="true">
+            <stringProp name="scriptLanguage">beanshell</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">27dbf407-2138-4f53-b9a0-da3c6853de2e</stringProp>
+            <stringProp name="script">	import java.text.SimpleDateFormat;
+		
+	SimpleDateFormat sdf = new SimpleDateFormat(&quot;MM/dd/yyyy&quot;);
+	SimpleDateFormat sdf1 = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+	Calendar DOfL = Calendar.getInstance(); 
+	Calendar C_peffdate = Calendar.getInstance();
+	Calendar C_pexpdate = Calendar.getInstance();
+	Calendar C_currenttime= Calendar.getInstance();
+	//POL_EFF_DT	POL_EXP_DT
+	Date peffdate = new Date(vars.get(&quot;POL_EFF_DT&quot;));
+	Date pexpdate = new Date(vars.get(&quot;POL_EXP_DT&quot;));
+	C_currenttime.setTime(new Date());
+	C_peffdate.setTime(peffdate);
+	C_pexpdate.setTime(pexpdate);
+	DOfL.setTime(peffdate);
+	DOfL.add(Calendar.DATE, Integer.parseInt(vars.get(&quot;RandDate&quot;)));
+	
+	vars.put(&quot;DateOfLoss&quot;,&quot;0&quot;);
+	
+	//while (Integer.parseInt(vars.get(&quot;DateOfLoss&quot;)) &lt;= 0)
+	if (Integer.parseInt(vars.get(&quot;DateOfLoss&quot;)) &lt;= 0)
+		{
+			if((DOfL.after(C_peffdate) &amp;&amp; DOfL.before(C_pexpdate) &amp;&amp; (DOfL.before(C_currenttime) || DOfL.before(C_currenttime))))
+			{
+				DOfL.add(Calendar.DATE, Integer.parseInt(vars.get(&quot;RandDate&quot;)));
+				vars.put(&quot;DateOfLoss&quot;,sdf1.format(DOfL.getTime()).toString());
+			}			
+			//log.info(&quot;While Loop The value of Date of Loss :&quot;+vars.get(&quot;DateOfLoss&quot;));	
+		}
+
+	
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="REPORT_NUMBER - TP31_010_Agero_FNOL_Claim_Registration" enabled="true">
+            <stringProp name="scriptLanguage">beanshell</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">27dbf407-2138-4f53-b9a0-da3c6853de2e</stringProp>
+            <stringProp name="script">import java.util.Random;
+
+chars = &quot;0123456789&quot;;
+int string_length = 12;
+randomstring =&quot;&quot;;
+
+//randomstring += chars.substring(randomInt,randomInt+1);
+for (int i=0; i&lt;string_length; i++) 
+{
+	Random randomGenerator = new Random();
+     int randomInt = randomGenerator.nextInt(chars.length());
+     randomstring += chars.substring(randomInt,randomInt+1);               
+}
+
+vars.put(&quot;REPORT_NUMBER&quot;,randomstring);
+
+//log.info(&quot;RANDOMREPNUM RESULT - &quot;+vars.get(&quot;REPORT_NUMBER&quot;));
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XML_ResponseStatusDesc" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">XML_ResponseStatusDesc</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;_xml:MsgStatusDesc&gt;(.*?)&lt;/_xml:MsgStatusDesc&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP31_010_Agero_FNOL_Claim_Registration failed - HTTP Reponse not 200 OK" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP31_010_Agero_FNOL_Claim_Registration failed - HTTP Reponse 200 but unsucessful response, Status Description= ${XML_ResponseStatusDesc}, ${POLICY_NUMBER}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-450274016">MsgStatusCd&gt;Success&lt;/_xml:MsgStatusCd&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CNG_TP73_Watson_Get_Notes" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">5</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1455260938000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <longProp name="ThreadGroup.end_time">0</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TP73_010_Watson_Get_Notes" enabled="true">
+          <boolProp name="TransactionController.includeTimers">false</boolProp>
+          <boolProp name="TransactionController.parent">true</boolProp>
+        </TransactionController>
+        <hashTree>
+          <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Watson_Get_Notes" enabled="true">
+            <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+            <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+              <collectionProp name="Arguments.arguments">
+                <elementProp name="" elementType="HTTPArgument">
+                  <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                  <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ns=&quot;http://lmig.com/standardHeader/2008/07/01&quot; xmlns:not=&quot;http://pm.lmig.com/cl/2008/07/01/notes&quot;&gt;&lt;soapenv:Header&gt;&lt;ns:Transaction correlationID=&quot;123456&quot; sourceSystemID=&quot;${ENDPOINT}&quot; transactionTimestamp=&quot;2007-04-06T21:10:30&quot; userID=&quot;N0007040&quot; /&gt;&lt;/soapenv:Header&gt;&lt;soapenv:Body&gt;&lt;not:GetNotesRequest&gt;&lt;not:OccurrenceIdentifier&gt;${LM_PARENTEXPOSURENUMBER}&lt;/not:OccurrenceIdentifier&gt; &lt;not:ClaimIdentifier&gt;0001&lt;/not:ClaimIdentifier&gt; &lt;not:Level&gt;${LEVEL}&lt;/not:Level&gt; &lt;/not:GetNotesRequest&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                  <stringProp name="Argument.metadata">=</stringProp>
+                </elementProp>
+              </collectionProp>
+            </elementProp>
+            <stringProp name="HTTPSampler.domain"></stringProp>
+            <stringProp name="HTTPSampler.port"></stringProp>
+            <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+            <stringProp name="HTTPSampler.response_timeout"></stringProp>
+            <stringProp name="HTTPSampler.protocol">https</stringProp>
+            <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+            <stringProp name="HTTPSampler.path">https://${SERVER}/ClaimServicesMediationModuleWeb/sca/${ENDPOINT}ClaimServicesWSExport</stringProp>
+            <stringProp name="HTTPSampler.method">POST</stringProp>
+            <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+            <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+            <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+            <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+            <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+            <boolProp name="HTTPSampler.image_parser">true</boolProp>
+            <boolProp name="HTTPSampler.monitor">false</boolProp>
+            <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          </HTTPSamplerProxy>
+          <hashTree>
+            <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+              <collectionProp name="HeaderManager.headers">
+                <elementProp name="Accept-Language" elementType="Header">
+                  <stringProp name="Header.name">DNT</stringProp>
+                  <stringProp name="Header.value">1</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Host</stringProp>
+                  <stringProp name="Header.value">${SERVER}</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Connection</stringProp>
+                  <stringProp name="Header.value">Keep-Alive</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Accept-Encoding</stringProp>
+                  <stringProp name="Header.value">gzip, deflate</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">Content-Type</stringProp>
+                  <stringProp name="Header.value">text/xml; charset=utf-8</stringProp>
+                </elementProp>
+                <elementProp name="" elementType="Header">
+                  <stringProp name="Header.name">SOAPAction</stringProp>
+                  <stringProp name="Header.value">https://${SERVER}/ClaimServicesMe</stringProp>
+                </elementProp>
+              </collectionProp>
+            </HeaderManager>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="RESULTS_Count" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">RESULTS_Count</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;notes(.*?)Note&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="EXCEPTION_Count" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">EXCEPTION_Count</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;_01:Except(.*?)onClass&gt;</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="ERROR_Count" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">ERROR_Count</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;_01:Er(.*?)or</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="INVALID_Count" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">INVALID_Count</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;_01:ErrorText&gt;An Invali(.*?) Note Level was provided</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TYPENOTES_Count" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">TYPENOTES_Count</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;_01:ErrorText&gt;No Notes of t(.*?)s type found for Claim</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="NONOTES_Count" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">NONOTES_Count</stringProp>
+              <stringProp name="RegexExtractor.regex">&lt;_01:ErrorText&gt;No occ(.*?)rrence found for</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="NOTFOUND_Count" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+              <stringProp name="RegexExtractor.refname">NOTFOUND_Count</stringProp>
+              <stringProp name="RegexExtractor.regex">Claim not found i(.*?) CC and CWB.</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">null</stringProp>
+              <stringProp name="RegexExtractor.match_number">1</stringProp>
+              <stringProp name="Sample.scope">all</stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+              <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+              <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+              <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+              <stringProp name="RegexExtractor.template">$1$</stringProp>
+              <stringProp name="RegexExtractor.default">0</stringProp>
+              <stringProp name="RegexExtractor.match_number"></stringProp>
+            </RegexExtractor>
+            <hashTree/>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="LOGGER" enabled="true">
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">
+//log.info(&quot;Request XML - &quot;+prev.getSamplerData());
+//log.info(&quot;Response From Server - &quot;+prev.getResponseDataAsString());
+
+log.info(&quot;RESULTS_Count - &quot;+vars.get(&quot;RESULTS_Count&quot;));
+log.info(&quot;EXCEPTION_Count - &quot;+vars.get(&quot;EXCEPTION_Count&quot;));
+log.info(&quot;ERROR_Count - &quot;+vars.get(&quot;ERROR_Count&quot;));
+log.info(&quot;INVALID_Count - &quot;+vars.get(&quot;INVALID_Count&quot;));
+log.info(&quot;TYPENOTES_Count - &quot;+vars.get(&quot;TYPENOTES_Count&quot;));
+log.info(&quot;NONOTES_Count - &quot;+vars.get(&quot;NONOTES_Count&quot;));
+log.info(&quot;NOTFOUND_Count - &quot;+vars.get(&quot;NOTFOUND_Count&quot;));
+log.info(&quot;#####################__TP73_010_Watson_Get_Notes&quot;);</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+            <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+              <boolProp name="resetInterpreter">false</boolProp>
+              <stringProp name="parameters"></stringProp>
+              <stringProp name="filename"></stringProp>
+              <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat1=vars.get(&quot;RESULTS_Count&quot;);
+String Stat2=vars.get(&quot;EXCEPTION_Count&quot;);
+String Stat3=vars.get(&quot;ERROR_Count&quot;);
+String Stat4=vars.get(&quot;INVALID_Count&quot;);
+String Stat5=vars.get(&quot;TYPENOTES_Count&quot;);
+String Stat6=vars.get(&quot;NONOTES_Count&quot;);
+String Stat7=vars.get(&quot;NOTFOUND_Count&quot;);
+
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+	{	
+	if (Stat2.equals(&quot;null&quot;))
+		{
+			if (Stat3.equals(&quot;null&quot;) &amp;&amp; !Stat1.equals(&quot;null&quot;))
+			{
+				log.info(&quot;HTTP Response 200 with Note(s) returned for Claim Number: &quot;+vars.get(&quot;LM_PARENTEXPOSURENUMBER&quot;)+&quot; and Level: &quot;+vars.get(&quot;LEVEL&quot;));
+				prev.setSuccessful(true);
+			}
+			if (Stat1.equals(&quot;null&quot;) &amp;&amp; !Stat5.equals(&quot;null&quot;))
+			{
+				log.info(&quot;HTTP Response 200 but no notes retruned for Claim Number: &quot;+vars.get(&quot;LM_PARENTEXPOSURENUMBER&quot;)+&quot; and Level: &quot;+vars.get(&quot;LEVEL&quot;));
+				prev.setSuccessful(true);
+			}
+			if (!Stat3.equals(&quot;null&quot;) &amp;&amp; !Stat7.equals(&quot;null&quot;))
+			{
+				log.info(&quot;HTTP Response 200 but Claim Number: &quot;+vars.get(&quot;LM_PARENTEXPOSURENUMBER&quot;)+&quot; was not found&quot;);
+				prev.setSuccessful(true);
+			}
+			if (!Stat3.equals(&quot;null&quot;) &amp;&amp; !Stat6.equals(&quot;null&quot;))
+			{
+				log.info(&quot;HTTP Response 200 but no occurences for the Claim Number: &quot;+vars.get(&quot;PARENTEXPOSURENUM&quot;));
+				prev.setSuccessful(true);
+			}
+			if (Stat1.equals(&quot;null&quot;) &amp;&amp; !Stat4.equals(&quot;null&quot;))
+			{
+			log.error(&quot;TP73_010_Watson_Get_Notes failed for Request XML:&quot;+prev.getSamplerData()+&quot;####&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;####&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+			prev.setSuccessful(false);
+			ctx.setRestartNextLoop(true);
+			}
+		}
+	else 
+		{
+		log.error(&quot;TP73_010_Watson_Get_Notes failed for Request XML:&quot;+prev.getSamplerData()+&quot;####&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;####&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+		}
+	}
+
+else
+	{
+	log.error(&quot;TP73_010_Watson_Get_Notes failed for Request XML:&quot;+prev.getSamplerData()+&quot;####&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;####&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+	}
+
+
+</stringProp>
+            </BeanShellPostProcessor>
+            <hashTree/>
+          </hashTree>
+        </hashTree>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Defined Parameters" enabled="true">
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
+          <collectionProp name="UserParameters.names"/>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="1"/>
+          </collectionProp>
+        </UserParameters>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Pacing" enabled="true">
+          <stringProp name="ConstantTimer.delay">1</stringProp>
+          <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 60s x 1000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">SERVER.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">TP73.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">ENDPOINT.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename">SummReport_CNG_TP73_Watson_Get_Notes.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

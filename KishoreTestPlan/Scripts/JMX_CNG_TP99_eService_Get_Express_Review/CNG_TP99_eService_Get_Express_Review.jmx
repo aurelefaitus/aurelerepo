@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CNG_TP99_eService_Get_Express_Review" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1455260938000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <longProp name="ThreadGroup.end_time">0</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="RUN x ( 3 )" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </LoopController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="-Action" enabled="true">
+            <stringProp name="TestPlan.comments">This section contains the Action part of Loadrunner</stringProp>
+          </GenericController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TP99_010_eService_Get_Express_Review" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">true</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="EService_Get_Express_Review" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:app=&quot;http://pm.lmig.com/cl/AppraisalsLibrary/AppraisalsAPI&quot;&gt;	&lt;soap:Header/&gt;		&lt;soap:Body&gt;			&lt;app:getExpressReviewQualification&gt;			&lt;ExpressQualificationRequest&gt;				&lt;RequestId&gt;&lt;/RequestId&gt;				&lt;Requestor&gt;${REQUESTOR}&lt;/Requestor&gt;				&lt;UserID&gt;&lt;/UserID&gt;				&lt;EstimateAmount&gt;${ESTIMATEAMOUNT}&lt;/EstimateAmount&gt;				&lt;IncidentId&gt;cc:${INCIDENTID}&lt;/IncidentId&gt;			&lt;/ExpressQualificationRequest&gt;			&lt;/app:getExpressReviewQualification&gt;		&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">https://${SERVER}/AppraisalsMediationModuleWeb/sca/AppraisalsAPIExport1</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+                <boolProp name="HTTPSampler.image_parser">true</boolProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+                  <stringProp name="variableName">ESTIMATEAMOUNT</stringProp>
+                  <stringProp name="outputFormat"></stringProp>
+                  <stringProp name="minimumValue">1</stringProp>
+                  <stringProp name="maximumValue">100</stringProp>
+                  <stringProp name="randomSeed">4</stringProp>
+                  <boolProp name="perThread">true</boolProp>
+                </RandomVariableConfig>
+                <hashTree/>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">content-type</stringProp>
+                      <stringProp name="Header.value">application/soap+xml</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">SOAPAction</stringProp>
+                      <stringProp name="Header.value">https://${SERVER}/AppraisalsMediationModuleWeb/sca/AppraisalsAPIExport1</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1726224048">&quot;SaveCount=QUALIFIED_Count&quot;, &quot;Text=&gt;true&lt;/IsQualified&gt;&quot;, </stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">16</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">QUALIFIED</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;IsQualified&gt;(.*?)&lt;/IsQualified&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Qualification_Message" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;Qualification_Message&quot;|&quot;LB=&lt;QualificationMessage&gt;&quot;|&quot;RB=&lt;/QualificationMessage&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">Qualification_Message</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;QualificationMessage&gt;(.*?)&lt;/QualificationMessage&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;Error_Description&quot;|&quot;LB=&lt;Description&gt;&quot;|&quot;RB=&lt;/Description&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor-responsecode" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                  <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                  <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">0</stringProp>
+                  <stringProp name="RegexExtractor.match_number"></stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String stats= vars.get(&quot;QUALIFIED&quot;);
+String stats1= vars.get(&quot;Qualification_Message&quot;);
+log.info (&quot;the valuse of wualified &quot;+stats+&quot; the valuse of qualification message &quot;+stats1);
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!stats.equals(&quot;null&quot;) &amp;&amp; stats1.equals(&quot;null&quot;))
+	{	
+		//  search did not return any results
+		log.error(&quot;Transaction Name :TP99_010_eService_Get_Express_Review##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+		
+	}
+	else if (!stats.equals(&quot;null&quot;) &amp;&amp; !stats1.equals(&quot;null&quot;))
+	{
+		// search successfull
+		prev.setSuccessful(true);
+	}
+	else
+	{
+		log.error(&quot;Transaction Name :TP99_010_eService_Get_Express_Review##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+	}
+}
+else
+{
+// Unexpected result  from server
+	log.error(&quot;Transaction Name :TP99_010_eService_Get_Express_Review##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+//log.info(&quot;the value is : &quot;+vars.get(&quot;QUALIFIED_matchNr&quot;));
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Defined Parameters" enabled="true">
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
+          <collectionProp name="UserParameters.names"/>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="1"/>
+          </collectionProp>
+        </UserParameters>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Pacing" enabled="true">
+          <stringProp name="ConstantTimer.delay">1</stringProp>
+          <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 60s x 1000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">false</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">SERVER.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">REQUESTOR.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">TP99.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">false</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename">SummReport_CNG_TP99_eService_Get_Express_Review.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

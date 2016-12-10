@@ -1,0 +1,1911 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CNG_TP118_View_Exposures_Notes_Checks_v2" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">5</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">5</stringProp>
+        <longProp name="ThreadGroup.start_time">1455260938000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <longProp name="ThreadGroup.end_time">0</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="-Action" enabled="true">
+          <stringProp name="TestPlan.comments">This section contains the Action part of Loadrunner</stringProp>
+        </GenericController>
+        <hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_A_Launch_Browser" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="Response Assertion" enabled="false">
+                <collectionProp name="Asserion.test_strings">
+                  <stringProp name="-683626894">Please log in using your Enterprise ID and password</stringProp>
+                </collectionProp>
+                <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                <boolProp name="Assertion.assume_success">false</boolProp>
+                <intProp name="Assertion.test_type">16</intProp>
+              </ResponseAssertion>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="REALMOID" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=REALMOID&quot;|&quot;RegExp=REALMOID=(.*?)&amp;GUID&quot;|SEARCH_FILTERS,&quot;Scope=Headers&quot;|&quot;IgnoreRedirections=No&quot;|&quot;RequestUrl=*/ClaimCenter.do*&quot;|</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">REALMOID</stringProp>
+                <stringProp name="RegexExtractor.regex">REALMOID=(.*?)&amp;GUID</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="SMAGENTNAME" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=SMAGENTNAME&quot;|&quot;RegExp=SMAGENTNAME=(.*?)&amp;TARGET&quot;|SEARCH_FILTERS,&quot;Scope=Headers&quot;|&quot;IgnoreRedirections=No&quot;|&quot;RequestUrl=*/ClaimCenter.do*&quot;|</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">SMAGENTNAME</stringProp>
+                <stringProp name="RegexExtractor.regex">SMAGENTNAME=(.*?)&amp;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TYPE" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=TYPE&quot;|&quot;RegExp=TYPE=(.*?)&amp;REALMOID&quot;|SEARCH_FILTERS,&quot;Scope=Headers&quot;|&quot;IgnoreRedirections=No&quot;|&quot;RequestUrl=*/ClaimCenter.do*&quot;|</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TYPE</stringProp>
+                <stringProp name="RegexExtractor.regex">TYPE=(.*?)&amp;REALMOID</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">SMAGENTNAME=(.*?)&amp;</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		log.error(&quot;Transaction Name :CNG_TP118_A_Launch_Browser##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_A_Launch_Browser##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 0" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 0 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 0s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_B_Login" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PMClaimCenterLogin.fcc" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="USER" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">USER</stringProp>
+                    <stringProp name="Argument.value">${USERNAME}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="PASSWORD" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">PASSWORD</stringProp>
+                    <stringProp name="Argument.value">${PASSWORD}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="target" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">target</stringProp>
+                    <stringProp name="Argument.value">http://${SERVER}/cc/ClaimCenter.do</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="smauthreason" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">smauthreason</stringProp>
+                    <stringProp name="Argument.value">0</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/LMAuth/PMClaimCenterLogin.fcc?TYPE=${TYPE}&amp;REALMOID=${REALMOID}&amp;GUID=&amp;SMAUTHREASON=0&amp;METHOD=GET&amp;SMAGENTNAME=${SMAGENTNAME}&amp;TARGET=-SM-http%3a%2f%2fperf--pmclaimcenter--internal%2elibertyec%2ecom%2fcc%2fClaimCenter%2edo</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">content-type</stringProp>
+                    <stringProp name="Header.value">text/html;charset=utf-8</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cTBLINKS" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cTBLINKS&quot;,
+//		&quot;RegExp=button\&quot;,\&quot;iconCls\&quot;:\&quot;g-preferences-icon\&quot;},\\{\&quot;id\&quot;:\&quot;TabBar:InternalToolsHiddenLink\&quot;,\&quot;hidden\&quot;:true,\&quot;shortcut\&quot;:\&quot;ShiftT\&quot;}],\&quot;checksum\&quot;:\&quot;(.*?)\&quot;},&quot;,
+////		&quot;RegExp=],\&quot;checksum\&quot;:\&quot;(.*?)\&quot;},&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=Yes&quot;,&quot;RequestUrl=*/ClaimCenter.do*&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cTBLINKS</stringProp>
+                <stringProp name="RegexExtractor.regex">,&quot;checksum&quot;:&quot;(.*?)&quot;},</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cTABS" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cTABS&quot;,&quot;RegExp=\&quot;id\&quot;:\&quot;TabBar:VacationTab\&quot;,\&quot;text\&quot;:\&quot;Vacation\&quot;,\&quot;menu\&quot;:\\{\&quot;defaultType\&quot;:\&quot;gmenuitem\&quot;},\&quot;xtype\&quot;:\&quot;gbutton\&quot;,\&quot;disabled\&quot;:true}],\&quot;checksum\&quot;:\&quot;(.*?)\&quot;}},\\{&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=Yes&quot;,&quot;RequestUrl=*/ClaimCenter.do*&quot;
+</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cTABS</stringProp>
+                <stringProp name="RegexExtractor.regex">&quot;id&quot;:&quot;TabBar:VacationTab&quot;,&quot;text&quot;:&quot;Vacation&quot;,&quot;menu&quot;:{&quot;defaultType&quot;:&quot;gmenuitem&quot;},&quot;xtype&quot;:&quot;gbutton&quot;,&quot;disabled&quot;:true}],&quot;checksum&quot;:&quot;(.*?)&quot;}},{</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cINFOBAR_1" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cINFOBAR_1&quot;,&quot;RegExp=topActivitiesScreen:0\&quot;,\&quot;text\&quot;:\&quot;Activities\&quot;,\&quot;cls\&quot;:\&quot;x-panel-header-text\&quot;,\&quot;xtype\&quot;:\&quot;box\&quot;}]}]},\&quot;infoBar\&quot;:\\{\&quot;hidden\&quot;:true,\&quot;checksum\&quot;:\&quot;(.*?)\&quot;},&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=Yes&quot;,&quot;RequestUrl=*/ClaimCenter.do*&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cINFOBAR_1</stringProp>
+                <stringProp name="RegexExtractor.regex">topActivitiesScreen:0&quot;,&quot;text&quot;:&quot;Activities&quot;,&quot;cls&quot;:&quot;x-panel-header-text&quot;,&quot;xtype&quot;:&quot;box&quot;}]}]},&quot;infoBar&quot;:{&quot;hidden&quot;:true,&quot;checksum&quot;:&quot;(.*?)&quot;},</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cDESKTOPMENUACTIONS" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cDESKTOPMENUACTIONS&quot;,&quot;RegExp=Profile\&quot;}],\&quot;defaultType\&quot;:\&quot;gmenuitem\&quot;},\&quot;xtype\&quot;:\&quot;gbutton\&quot;,\&quot;noaction\&quot;:1,\&quot;checksum\&quot;:\&quot;(.*?)\&quot;,&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=Yes&quot;,&quot;RequestUrl=*/ClaimCenter.do*&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cDESKTOPMENUACTIONS</stringProp>
+                <stringProp name="RegexExtractor.regex">Profile&quot;}],&quot;defaultType&quot;:&quot;gmenuitem&quot;},&quot;xtype&quot;:&quot;gbutton&quot;,&quot;noaction&quot;:1,&quot;checksum&quot;:&quot;(.*?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cDESKTOPMENULINKS" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cDESKTOPMENULINKS&quot;,&quot;RegExp=Report\&quot;,\&quot;eventId\&quot;:\&quot;Desktop:MenuLinks:Desktop_MarketingReport\&quot;}],\&quot;xtype\&quot;:\&quot;accordionpanel\&quot;,\&quot;checksum\&quot;:\&quot;(.*?)\&quot;,&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=Yes&quot;,&quot;RequestUrl=*/ClaimCenter.do*&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cDESKTOPMENULINKS</stringProp>
+                <stringProp name="RegexExtractor.regex">Report&quot;,&quot;eventId&quot;:&quot;Desktop:MenuLinks:Desktop_MarketingReport&quot;}],&quot;xtype&quot;:&quot;accordionpanel&quot;,&quot;checksum&quot;:&quot;(.*?)&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">Guid(.+?)e Navigator</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">String cTBLINKS_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cTBLINKS&quot;), &quot;UTF-8&quot;);
+String cTABS_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cTABS&quot;), &quot;UTF-8&quot;);
+String cDESKTOPMENULINKS_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cDESKTOPMENULINKS&quot;), &quot;UTF-8&quot;);
+String cDESKTOPMENUACTIONS_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cDESKTOPMENUACTIONS&quot;), &quot;UTF-8&quot;);
+String cINFOBAR_1_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cINFOBAR_1&quot;), &quot;UTF-8&quot;);
+vars.put(&quot;cTBLINKS_URL2&quot;,cTBLINKS_URL2);
+vars.put(&quot;cTABS_URL2&quot;,cTABS_URL2);
+vars.put(&quot;cDESKTOPMENULINKS_URL2&quot;,cDESKTOPMENULINKS_URL2);
+vars.put(&quot;cDESKTOPMENUACTIONS_URL2&quot;,cDESKTOPMENUACTIONS_URL2);
+vars.put(&quot;cINFOBAR_1_URL2&quot;,cINFOBAR_1_URL2);
+
+int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (Stat.equals(&quot;null&quot;))
+	{	
+		log.error(&quot;Transaction Name :CNG_TP118_B_Login##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+	}
+	else 
+	{
+		prev.setSuccessful(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_B_Login##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_C_Activities_Claim_Search" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_2" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.value">TabBar%3AClaimTab%3AClaimTab_FindClaim=${CLAIMNUMBER}&amp;QuickJump=&amp;Desktop%3AMenuLinks_toggle=&amp;DesktopActivities%3ADesktopActivitiesScreen%3ADesktopActivitiesLV%3ADesktopActivitiesFilter=AndFilter%2FMy%20activities%20today&amp;%3Atblinks=${cTBLINKS_URL2}&amp;%3Atabs=${cTABS_URL2}&amp;infoBar=${cINFOBAR_1_URL2}&amp;Desktop%3ADesktopMenuActions=${cDESKTOPMENUACTIONS_URL2}&amp;Desktop%3AMenuLinks=${cDESKTOPMENULINKS_URL2}&amp;csrfToken=&amp;eventSource=TabBar%3AClaimTab%3AClaimTab_FindClaim_Button_act</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding">utf-8</stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cINFOBAR" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cINFOBAR&quot;,&quot;RegExp=\\\\/span&gt;\&quot;,\&quot;cls\&quot;:\&quot;infobar_elem\&quot;,\&quot;noaction\&quot;:1,\&quot;disabled\&quot;:true}],\&quot;checksum\&quot;:\&quot;(.*?)\&quot;},&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=No&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cINFOBAR</stringProp>
+                <stringProp name="RegexExtractor.regex">\\\\/span&gt;\&quot;,\&quot;cls\&quot;:\&quot;infobar_elem\&quot;,\&quot;noaction\&quot;:1,\&quot;disabled\&quot;:true}],\&quot;checksum\&quot;:\&quot;(.*?)\&quot;},</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cTABS_1" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cTABS_1&quot;,&quot;RegExp=\&quot;id\&quot;:\&quot;TabBar:VacationTab\&quot;,\&quot;text\&quot;:\&quot;Vacation\&quot;,\&quot;menu\&quot;:\\{\&quot;defaultType\&quot;:\&quot;gmenuitem\&quot;},\&quot;xtype\&quot;:\&quot;gbutton\&quot;,\&quot;disabled\&quot;:true}],\&quot;checksum\&quot;:\&quot;(.*?)\&quot;}},\\{&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=No&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cTABS_1</stringProp>
+                <stringProp name="RegexExtractor.regex">\&quot;id\&quot;:\&quot;TabBar:VacationTab\&quot;,\&quot;text\&quot;:\&quot;Vacation\&quot;,\&quot;menu\&quot;:\\{\&quot;defaultType\&quot;:\&quot;gmenuitem\&quot;},\&quot;xtype\&quot;:\&quot;gbutton\&quot;,\&quot;disabled\&quot;:true}],\&quot;checksum\&quot;:\&quot;(.*?)\&quot;}},\\{</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cCLAIMMENULINKS" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cCLAIMMENULINKS&quot;,&quot;RegExp=\&quot;eventId\&quot;:\&quot;Claim:MenuLinks:Claim_ClaimCalendarGroup:ClaimCalendarGroup_ClaimCalendar\&quot;}]}],\&quot;xtype\&quot;:\&quot;accordionpanel\&quot;,\&quot;checksum\&quot;:\&quot;(.*?)\&quot;,&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=No&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cCLAIMMENULINKS</stringProp>
+                <stringProp name="RegexExtractor.regex">\&quot;eventId\&quot;:\&quot;Claim:MenuLinks:Claim_ClaimCalendarGroup:ClaimCalendarGroup_ClaimCalendar\&quot;}]}],\&quot;xtype\&quot;:\&quot;accordionpanel\&quot;,\&quot;checksum\&quot;:\&quot;(.*?)\&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="cCLAIMMENUACTIONS" enabled="true">
+                <stringProp name="TestPlan.comments">&quot;ParamName=cCLAIMMENUACTIONS&quot;,&quot;RegExp=ctions\&quot;,\&quot;menu\&quot;:\\{\&quot;numEntriesPerColumn\&quot;:3,\&quot;flattened\&quot;:true,\&quot;defaultType\&quot;:\&quot;gmenuitem\&quot;},\&quot;xtype\&quot;:\&quot;gbutton\&quot;,\&quot;noaction\&quot;:1,\&quot;checksum\&quot;:\&quot;(.*?)\&quot;,&quot;,
+////		SEARCH_FILTERS,&quot;Scope=Body&quot;,&quot;IgnoreRedirections=No&quot;</stringProp>
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">cCLAIMMENUACTIONS</stringProp>
+                <stringProp name="RegexExtractor.regex">ctions\&quot;,\&quot;menu\&quot;:\\{\&quot;numEntriesPerColumn\&quot;:3,\&quot;flattened\&quot;:true,\&quot;defaultType\&quot;:\&quot;gmenuitem\&quot;},\&quot;xtype\&quot;:\&quot;gbutton\&quot;,\&quot;noaction\&quot;:1,\&quot;checksum\&quot;:\&quot;(.*?)\&quot;,</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">Sum(.*?)ry</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">String cCLAIMMENUACTIONS_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cCLAIMMENUACTIONS&quot;), &quot;UTF-8&quot;);
+String cCLAIMMENULINKS_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cCLAIMMENULINKS&quot;), &quot;UTF-8&quot;);
+String cTABS_1_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cTABS_1&quot;), &quot;UTF-8&quot;);
+String cINFOBAR_URL2 = java.net.URLEncoder.encode(vars.get(&quot;cINFOBAR&quot;), &quot;UTF-8&quot;);
+vars.put(&quot;cCLAIMMENUACTIONS_URL2&quot;,cCLAIMMENUACTIONS_URL2);
+vars.put(&quot;cCLAIMMENULINKS_URL2&quot;,cCLAIMMENULINKS_URL2);
+vars.put(&quot;cTABS_1_URL2&quot;,cTABS_1_URL2);
+vars.put(&quot;cINFOBAR_URL2&quot;,cINFOBAR_URL2);
+
+
+int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		//log.error(&quot;Transaction Name :CNG_TP118_C_Activities_Claim_Search##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_C_Activities_Claim_Search##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_D_Click_Exposure_Menu_Link" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_3" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="Claim:MenuLinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENULINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="csrfToken" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">csrfToken</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="TabBar:ClaimTab:ClaimTab_FindClaim" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">TabBar:ClaimTab:ClaimTab_FindClaim</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="QuickJump" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">QuickJump</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks_toggle" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks_toggle</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tblinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tblinks</stringProp>
+                    <stringProp name="Argument.value">${cTBLINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tabs" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tabs</stringProp>
+                    <stringProp name="Argument.value">${cTABS_1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="infoBar" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">infoBar</stringProp>
+                    <stringProp name="Argument.value">${cINFOBAR}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:ClaimMenuActions" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:ClaimMenuActions</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENUACTIONS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="eventSource" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">eventSource</stringProp>
+                    <stringProp name="Argument.value">Claim:MenuLinks:Claim_ClaimExposures_act</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">Expo(.+?)res</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		log.error(&quot;Transaction Name :CNG_TP118_D_Click_Exposure_Menu_Link##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_D_Click_Exposure_Menu_Link##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_E_Open_Exposure_Detail" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_4" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name"></stringProp>
+                    <stringProp name="Argument.value">&amp;QuickJump=&amp;Claim%3AMenuLinks_toggle=&amp;ClaimExposures%3AClaimExposuresScreen%3AExposureList%3AExposuresLV%3AExposuresFilter=CoreFilters.AllFilter%2FAll%20claimants&amp;%3Atblinks=${cTBLINKS_URL2}&amp;%3Atabs=${cTABS_1_URL2}&amp;infoBar=${cINFOBAR_URL2}&amp;Claim%3AClaimMenuActions=${cCLAIMMENUACTIONS_URL2}&amp;Claim%3AMenuLinks=${cCLAIMMENULINKS_URL2}&amp;csrfToken=&amp;eventSource=ClaimExposures%3AClaimExposuresScreen%3AExposureList%3AExposuresLV%3A0%3AOrder_act&amp;objFocusId=ClaimExposures%3AClaimExposuresScreen%3AExposureList%3AExposuresLV%3A0%3AOrder</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">Det(.*?)ils</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		log.error(&quot;Transaction Name :CNG_TP118_E_Open_Exposure_Detail##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_E_Open_Exposure_Detail##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_F_Click_Notes_Menu_Link" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_5" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="Claim:MenuLinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENULINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="csrfToken" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">csrfToken</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="TabBar:ClaimTab:ClaimTab_FindClaim" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">TabBar:ClaimTab:ClaimTab_FindClaim</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="QuickJump" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">QuickJump</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks_toggle" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks_toggle</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tblinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tblinks</stringProp>
+                    <stringProp name="Argument.value">${cTBLINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tabs" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tabs</stringProp>
+                    <stringProp name="Argument.value">${cTABS_1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="infoBar" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">infoBar</stringProp>
+                    <stringProp name="Argument.value">${cINFOBAR}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:ClaimMenuActions" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:ClaimMenuActions</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENUACTIONS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="eventSource" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">eventSource</stringProp>
+                    <stringProp name="Argument.value">Claim:MenuLinks:Claim_ClaimNotes_act</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">No(.*?)es</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		log.error(&quot;Transaction Name :CNG_TP118_F_Click_Notes_Menu_Link##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_F_Click_Notes_Menu_Link##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_G_Click_Financials_Menu_Link" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_6" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="NoteSearchCriteria.DateCriterionChoice.DateSearchType_Radio" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">NoteSearchCriteria.DateCriterionChoice.DateSearchType_Radio</stringProp>
+                    <stringProp name="Argument.value">ClaimNotes:NotesSearchScreen:NoteSearchDV:DateSearch:DateSearchRangeChoice_Choice</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimNotes:NotesSearchScreen:NoteSearchDV:DateSearch:DateSearchRangeValue" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimNotes:NotesSearchScreen:NoteSearchDV:DateSearch:DateSearchRangeValue</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="TabBar:ClaimTab:ClaimTab_FindClaim" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">TabBar:ClaimTab:ClaimTab_FindClaim</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="QuickJump" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">QuickJump</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks_toggle" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks_toggle</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimNotes:NotesSearchScreen:NoteSearchDV:TextSearch" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimNotes:NotesSearchScreen:NoteSearchDV:TextSearch</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimNotes:NotesSearchScreen:NoteSearchDV:Author" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimNotes:NotesSearchScreen:NoteSearchDV:Author</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimNotes:NotesSearchScreen:NoteSearchDV:RelatedToSearch" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimNotes:NotesSearchScreen:NoteSearchDV:RelatedToSearch</stringProp>
+                    <stringProp name="Argument.value">${cCLAIM_REF}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimNotes:NotesSearchScreen:NoteSearchDV:Topic" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimNotes:NotesSearchScreen:NoteSearchDV:Topic</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="infoBar" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">infoBar</stringProp>
+                    <stringProp name="Argument.value">${cINFOBAR}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tabs" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tabs</stringProp>
+                    <stringProp name="Argument.value">${cTABS_1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tblinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tblinks</stringProp>
+                    <stringProp name="Argument.value">${cTBLINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimNotes:NotesSearchScreen:NoteSearchDV:SortAscending" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimNotes:NotesSearchScreen:NoteSearchDV:SortAscending</stringProp>
+                    <stringProp name="Argument.value">false</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="eventSource" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">eventSource</stringProp>
+                    <stringProp name="Argument.value">Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimFinancialsSummary_act</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="csrfToken" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">csrfToken</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENULINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:ClaimMenuActions" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:ClaimMenuActions</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENUACTIONS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimNotes:NotesSearchScreen:NoteSearchDV:SortByOption" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimNotes:NotesSearchScreen:NoteSearchDV:SortByOption</stringProp>
+                    <stringProp name="Argument.value">date</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">Financials S(.*?)ary</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		log.error(&quot;Transaction Name :CNG_TP118_G_Click_Financials_Menu_Link##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_G_Click_Financials_Menu_Link##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_H_Open_Checks_Screen" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_7" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="infoBar" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">infoBar</stringProp>
+                    <stringProp name="Argument.value">${cINFOBAR}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:ClaimMenuActions" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:ClaimMenuActions</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENUACTIONS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="TabBar:ClaimTab:ClaimTab_FindClaim" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">TabBar:ClaimTab:ClaimTab_FindClaim</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="QuickJump" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">QuickJump</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks_toggle" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks_toggle</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryRangeInput" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:FinancialsSummaryRangeInput</stringProp>
+                    <stringProp name="Argument.value">Claimant</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:secondfilter" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimFinancialsSummary:ClaimFinancialsSummaryScreen:secondfilter</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tblinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tblinks</stringProp>
+                    <stringProp name="Argument.value">${cTBLINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tabs" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tabs</stringProp>
+                    <stringProp name="Argument.value">${cTABS_1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="eventSource" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">eventSource</stringProp>
+                    <stringProp name="Argument.value">Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimFinancialsChecks_act</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="csrfToken" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">csrfToken</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENULINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">Financia(.*?)hecks</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		log.error(&quot;Transaction Name :CNG_TP118_H_Open_Checks_Screen##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_H_Open_Checks_Screen##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_I_Open_Check_Report_Screen" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_8" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="Claim:ClaimMenuActions" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:ClaimMenuActions</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENUACTIONS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks</stringProp>
+                    <stringProp name="Argument.value">${cCLAIMMENULINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="TabBar:ClaimTab:ClaimTab_FindClaim" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">TabBar:ClaimTab:ClaimTab_FindClaim</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="QuickJump" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">QuickJump</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="Claim:MenuLinks_toggle" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">Claim:MenuLinks_toggle</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="ClaimFinancialsChecks:ClaimFinancialsChecksScreen:exposures" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">ClaimFinancialsChecks:ClaimFinancialsChecksScreen:exposures</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tblinks" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tblinks</stringProp>
+                    <stringProp name="Argument.value">${cTBLINKS}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name=":tabs" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">:tabs</stringProp>
+                    <stringProp name="Argument.value">${cTABS_1}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="infoBar" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">infoBar</stringProp>
+                    <stringProp name="Argument.value">${cINFOBAR}</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="eventSource" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">eventSource</stringProp>
+                    <stringProp name="Argument.value">Claim:MenuLinks:Claim_ClaimFinancialsGroup:ClaimFinancialsGroup_ClaimDocumentsPIPLedger_act</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                  <elementProp name="csrfToken" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name">csrfToken</stringProp>
+                    <stringProp name="Argument.value"></stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">POST</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="TextCheck" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                <stringProp name="RegexExtractor.refname">TextCheck</stringProp>
+                <stringProp name="RegexExtractor.regex">Check (.*?)ort</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">null</stringProp>
+                <stringProp name="RegexExtractor.match_number">1</stringProp>
+                <stringProp name="Sample.scope">all</stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String Stat=vars.get(&quot;TextCheck&quot;);
+//log.info(&quot;the values of TextCheck is &quot;+vars.get(&quot;TextCheck&quot;));
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!Stat.equals(&quot;null&quot;))
+	{	
+		// Login page displayed successfully.
+		prev.setSuccessful(true);
+	}
+	else 
+	{
+		//Launch page is not display successfully
+		log.error(&quot;Transaction Name :CNG_TP118_I_Open_Check_Report_Screen##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+}
+}
+else
+{
+
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_I_Open_Check_Report_Screen##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+
+
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="ThinkTime - 10" enabled="true">
+              <stringProp name="TestPlan.comments">This transaction will wait for 10 seconds</stringProp>
+            </GenericController>
+            <hashTree>
+              <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+                <stringProp name="ConstantTimer.delay">1</stringProp>
+                <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 10s x 1000</stringProp>
+              </ConstantTimer>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+          <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="CNG_TP118_J_Logout" enabled="true">
+            <boolProp name="TransactionController.includeTimers">false</boolProp>
+            <boolProp name="TransactionController.parent">true</boolProp>
+          </TransactionController>
+          <hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="ClaimCenter.do_10" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments">
+                  <elementProp name="" elementType="HTTPArgument">
+                    <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                    <stringProp name="Argument.name"></stringProp>
+                    <stringProp name="Argument.value">&amp;QuickJump=&amp;Desktop%3AMenuLinks_toggle=&amp;DesktopActivities%3ADesktopActivitiesScreen%3ADesktopActivitiesLV%3ADesktopActivitiesFilter=AndFilter%2FMy%20activities%20today&amp;%3Atblinks=${cTBLINKS_URL2}&amp;%3Atabs=${cTABS_URL2}&amp;Desktop%3ADesktopMenuActions=${cDESKTOPMENUACTIONS_URL2}&amp;Desktop%3AMenuLinks=${cDESKTOPMENULINKS_URL2}&amp;csrfToken=&amp;eventSource=TabBar%3ALogoutTabBarLink_act&amp;objFocusId=TabBar%3ALogoutTabBarLink</stringProp>
+                    <stringProp name="Argument.metadata">=</stringProp>
+                    <boolProp name="HTTPArgument.use_equals">true</boolProp>
+                  </elementProp>
+                </collectionProp>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/cc/ClaimCenter.do</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+              <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="responsecode" enabled="true">
+                <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                <stringProp name="RegexExtractor.template">$1$</stringProp>
+                <stringProp name="RegexExtractor.default">0</stringProp>
+                <stringProp name="RegexExtractor.match_number"></stringProp>
+              </RegexExtractor>
+              <hashTree/>
+              <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                <boolProp name="resetInterpreter">false</boolProp>
+                <stringProp name="parameters"></stringProp>
+                <stringProp name="filename"></stringProp>
+                <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+
+// if we get a sucessful http response from web service
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	// Login page displayed successfully.
+		prev.setSuccessful(true);
+}
+
+else
+{
+//response is not 200
+	log.error(&quot;Transaction Name :CNG_TP118_J_Logout##&quot;+&quot;Loing ID and Password:&quot;+vars.get(&quot;USERNAME&quot;)+&quot; &quot;+vars.get(&quot;PASSWORD&quot;)+&quot;##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+</stringProp>
+              </BeanShellPostProcessor>
+              <hashTree/>
+            </hashTree>
+            <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="PMClaimCenterLogout.fcc" enabled="true">
+              <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+                <collectionProp name="Arguments.arguments"/>
+              </elementProp>
+              <stringProp name="HTTPSampler.domain"></stringProp>
+              <stringProp name="HTTPSampler.port"></stringProp>
+              <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+              <stringProp name="HTTPSampler.response_timeout"></stringProp>
+              <stringProp name="HTTPSampler.protocol">https</stringProp>
+              <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+              <stringProp name="HTTPSampler.path">https://${SERVER}/LMAuth/PMClaimCenterLogout.fcc</stringProp>
+              <stringProp name="HTTPSampler.method">GET</stringProp>
+              <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+              <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+              <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+              <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+              <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+              <boolProp name="HTTPSampler.image_parser">true</boolProp>
+              <boolProp name="HTTPSampler.monitor">false</boolProp>
+              <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+            </HTTPSamplerProxy>
+            <hashTree>
+              <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                <collectionProp name="HeaderManager.headers">
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">DNT</stringProp>
+                    <stringProp name="Header.value">1</stringProp>
+                  </elementProp>
+                  <elementProp name="Accept-Language" elementType="Header">
+                    <stringProp name="Header.name">X-Requested-With</stringProp>
+                    <stringProp name="Header.value">XMLHttpRequest</stringProp>
+                  </elementProp>
+                </collectionProp>
+              </HeaderManager>
+              <hashTree/>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="RUN x ( 1 )" enabled="false">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </LoopController>
+        <hashTree/>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Defined Parameters" enabled="true">
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
+          <collectionProp name="UserParameters.names"/>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="1"/>
+          </collectionProp>
+        </UserParameters>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Pacing" enabled="true">
+          <stringProp name="ConstantTimer.delay">1</stringProp>
+          <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 60s x 1000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">TP118.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">nNumbers.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">SERVER.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">true</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename">SummReport_CNG_TP118_View_Exposures_Notes_Checks_v2.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Host</stringProp>
+              <stringProp name="Header.value">perf-pmclaimcenter-internal.libertyec.com</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <Arguments guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="false">
+          <collectionProp name="Arguments.arguments">
+            <elementProp name="UserLogin" elementType="Argument">
+              <stringProp name="Argument.name">UserLogin</stringProp>
+              <stringProp name="Argument.value">0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+            <elementProp name="Logout" elementType="Argument">
+              <stringProp name="Argument.name">Logout</stringProp>
+              <stringProp name="Argument.value">0</stringProp>
+              <stringProp name="Argument.metadata">=</stringProp>
+            </elementProp>
+          </collectionProp>
+        </Arguments>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

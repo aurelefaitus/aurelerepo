@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="TF_CNG_TP160_APD_RepairStatus" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_CNG_TP160_APD_RepairStatus" enabled="true"/>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP160_010_APD_RepairStatus" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#xd;
+&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:soap1=&quot;http://guidewire.com/ws/soapheaders&quot; xmlns:lm=&quot;http://pm.lmig.com/cl/cc/webservices/repairstatus/LM_IRepairStatusAPI_v2&quot; xmlns:v2=&quot;http://example.com/com/lmig/pm/cl/cc/webservices/repairstatus/model/v2&quot;&gt;&#xd;
+		   &lt;soap:Header&gt;&#xd;
+		      &lt;soap1:authentication&gt;&#xd;
+		         &lt;soap1:username&gt;su&lt;/soap1:username&gt;&#xd;
+		         &lt;soap1:password&gt;gw&lt;/soap1:password&gt;&#xd;
+		      &lt;/soap1:authentication&gt;&#xd;
+		   &lt;soap1:locale&gt;en_US&lt;/soap1:locale&gt;&lt;/soap:Header&gt;&#xd;
+		   &lt;soap:Body&gt;&#xd;
+		           &lt;lm:processRepairStatus&gt;&#xd;
+		         &lt;lm:request&gt;&#xd;
+		            &lt;v2:AssessmentSourceID&gt;${PUBLICID}&lt;/v2:AssessmentSourceID&gt;&#xd;
+		            &lt;v2:ClaimNumber&gt;${CLAIMNUMBER}-${CLAIMORDER}&lt;/v2:ClaimNumber&gt;&#xd;
+		            &lt;v2:CreateDate&gt;2016-05-06T12:45:00Z&lt;/v2:CreateDate&gt;&#xd;
+		            &lt;v2:RepairOrderNumber&gt;10123&lt;/v2:RepairOrderNumber&gt;&#xd;
+		            &lt;v2:StatusLines&gt;&#xd;
+		               &lt;v2:Entry&gt;&#xd;
+		                  &lt;v2:DelayCode&gt;?&lt;/v2:DelayCode&gt;&#xd;
+		                  &lt;v2:StatusCode&gt;14B&lt;/v2:StatusCode&gt;&#xd;
+		                  &lt;v2:StatusComment&gt;Vehicle Arrived at Shop&lt;/v2:StatusComment&gt;	                 &#xd;
+		                  &lt;v2:StatusDate&gt;2016-05-06T12:45:00Z&lt;/v2:StatusDate&gt;	        &#xd;
+		               &lt;/v2:Entry&gt;&#xd;
+		            &lt;/v2:StatusLines&gt;&#xd;
+		            &lt;v2:TransactionDate&gt;2016-09-06T12:45:00Z&lt;/v2:TransactionDate&gt;&#xd;
+		          &lt;v2:TransactionID&gt;${TRANSACTIONID}&lt;/v2:TransactionID&gt;&#xd;
+	         &lt;/lm:request&gt;&#xd;
+	&lt;/lm:processRepairStatus&gt;&#xd;
+	&lt;/soap:Body&gt;&#xd;
+&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">${GV_HOSTNAME_NAVIGATOR}</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">/cc/ws/com/lmig/pm/cl/cc/webservices/repairstatus/LM_IRepairStatusAPI_v2</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="TestPlan.comments">${GV_HOSTNAME_NAVIGATOR} = perf-pmclaimcenter-internal.libertyec.com</stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <CounterConfig guiclass="CounterConfigGui" testclass="CounterConfig" testname="TRANSACTIONID_TP160" enabled="true">
+            <stringProp name="CounterConfig.start">1</stringProp>
+            <stringProp name="CounterConfig.end">20000</stringProp>
+            <stringProp name="CounterConfig.incr">1</stringProp>
+            <stringProp name="CounterConfig.name">TRANSACTIONID</stringProp>
+            <stringProp name="CounterConfig.format">00000</stringProp>
+            <boolProp name="CounterConfig.per_user">false</boolProp>
+          </CounterConfig>
+          <hashTree/>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="TP160 CSV Data Set Config" enabled="true">
+            <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP160_APD_RepairStatus${PATH_SEP}TP160.csv</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="variableNames">PUBLICID,CLAIMNUMBER,CLAIMORDER,NAME</stringProp>
+            <stringProp name="delimiter">,</stringProp>
+            <boolProp name="quotedData">false</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <stringProp name="TestPlan.comments">PUBLICID,CLAIMNUMBER,CLAIMORDER,NAME</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">SOAPAction</stringProp>
+                <stringProp name="Header.value">https://${GV_HOSTNAME_NAVIGATOR}/cc/ws/com/lmig/pm/cl/cc/webservices/repairstatus/LM_IRepairStatusAPI_v2</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">SSL_VERSION</stringProp>
+                <stringProp name="Header.value">TLS</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">content-type</stringProp>
+                <stringProp name="Header.value">application/soap+xml</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XML_ErrorMessage Extractor" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">XML_ErrorMessage</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP160_010_APD_RepairStatus - Error text: ${XML_ErrorMessage} received for Incident ID: $[INCIDENTID}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-359801367"> &lt;pogo:Status&gt;Accept&lt;/pogo:Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">2</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP160_010_APD_RepairStatus- Error text: ${XML_ErrorMessage} received for Incident ID: ${INCIDENTID}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="1955373352">Accept</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Think Time" enabled="true">
+          <stringProp name="ConstantTimer.delay">${CNG_TP160_APD_RepairStatus_ThinkTime}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">${CNG_TP160_APD_RepairStatus_Pacing}</stringProp>
+        </TestAction>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

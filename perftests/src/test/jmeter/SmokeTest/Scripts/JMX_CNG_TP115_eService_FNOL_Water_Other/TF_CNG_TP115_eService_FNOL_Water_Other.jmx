@@ -1,0 +1,2047 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_CNG_TP115_eService_FNOL_Water_Other" enabled="true"/>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="TP115 - CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP115_eService_FNOL_Water_Other${PATH_SEP}TP115.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">POLICY_NUMBER,POL_EFF_DATE,POL_EXP_DATE</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <stringProp name="TestPlan.comments">POLICY_NUMBER,POL_EFF_DATE,POL_EXP_DATE</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+          <stringProp name="ConstantTimer.delay">${CNG_TP115_eService_FNOL_Water_Other_ThinkTime}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="PacingTime" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">${CNG_TP115_eService_FNOL_Water_Other_Pacing}</stringProp>
+        </TestAction>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_010_eService_Create_Claim" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ifn=&quot;http://pm.lmig.com/cl/FNOLMediationLibrary/iFNOLServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ifn:createClaim&gt;&lt;CreateClaimRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;Claim&gt;&lt;HowReported&gt;eService&lt;/HowReported&gt;&lt;Policy&gt;&lt;PolicyNumber&gt;${POLICY_NUMBER}&lt;/PolicyNumber&gt;&lt;PolicyType&gt;homeowners&lt;/PolicyType&gt;&lt;/Policy&gt;&lt;LossDate&gt;${DateOfLoss}T18:12:00.000Z&lt;/LossDate&gt;&lt;LossType&gt;pr&lt;/LossType&gt;&lt;ReportedDate&gt;${DateOfLoss}&lt;/ReportedDate&gt;&lt;ReportedType&gt;self&lt;/ReportedType&gt;&lt;/Claim&gt;&lt;/CreateClaimRequest&gt;&lt;/ifn:createClaim&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_FNOL}/FNOLMediationModuleWeb/sca/FNOLServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_FNOL}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="RandDate" enabled="true">
+            <stringProp name="maximumValue">30</stringProp>
+            <stringProp name="minimumValue">1</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <boolProp name="perThread">false</boolProp>
+            <stringProp name="randomSeed"></stringProp>
+            <stringProp name="variableName">RandDate</stringProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <JSR223PreProcessor guiclass="TestBeanGUI" testclass="JSR223PreProcessor" testname="DateOfLoss - TP115_010_eService_Create_Claim" enabled="true">
+            <stringProp name="scriptLanguage">beanshell</stringProp>
+            <stringProp name="parameters"></stringProp>
+            <stringProp name="filename"></stringProp>
+            <stringProp name="cacheKey">27dbf407-2138-4f53-b9a0-da3c6853de2e</stringProp>
+            <stringProp name="script">	import java.text.SimpleDateFormat;
+		
+	SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+	SimpleDateFormat sdf1 = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+	Calendar DOfL = Calendar.getInstance(); 
+	Calendar C_peffdate = Calendar.getInstance();
+	Calendar C_pexpdate = Calendar.getInstance();
+	Calendar C_currenttime= Calendar.getInstance();
+	
+	Date peffdate = new Date(vars.get(&quot;POL_EFF_DATE&quot;));
+	Date pexpdate = new Date(vars.get(&quot;POL_EXP_DATE&quot;));
+	
+	C_currenttime.setTime(new Date());
+	C_peffdate.setTime(peffdate);
+	C_pexpdate.setTime(pexpdate);
+	DOfL.setTime(peffdate);
+	DOfL.add(Calendar.DATE, Integer.parseInt(vars.get(&quot;RandDate&quot;)));
+		
+	vars.put(&quot;DateOfLoss&quot;,&quot;0&quot;);
+	
+//	while (Integer.parseInt(vars.get(&quot;DateOfLoss&quot;)) &lt;= 0)
+	if (Integer.parseInt(vars.get(&quot;DateOfLoss&quot;)) &lt;= 0)
+		{
+			if((DOfL.after(C_peffdate) &amp;&amp; DOfL.before(C_pexpdate) &amp;&amp; (DOfL.before(C_currenttime) || DOfL.before(C_currenttime))))
+			{
+				DOfL.add(Calendar.DATE, Integer.parseInt(vars.get(&quot;RandDate&quot;)));
+				vars.put(&quot;DateOfLoss&quot;,sdf1.format(DOfL.getTime()).toString());
+				
+			}
+			//log.info(&quot;While Loop The valuse of of Date of Loss :&quot;+vars.get(&quot;DateOfLoss&quot;));	
+		}
+</stringProp>
+          </JSR223PreProcessor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_010_eService_Create_Claim failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Claim_ID" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Claim_ID&quot;|&quot;LB=&lt;Claim&gt;&lt;Id&gt;&quot;|&quot;RB=&lt;/Id&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Claim_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Claim&gt;&lt;Id&gt;(.*?)&lt;/Id&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Description&quot;|&quot;LB=&lt;Description&gt;&quot;|&quot;RB=&lt;/Description&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Claim_Number" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Claim_Number&quot;|&quot;LB=&lt;ClaimNumber&gt;&quot;|&quot;RB=&lt;/ClaimNumber&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Claim_Number</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;ClaimNumber&gt;(.*?)&lt;/ClaimNumber&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_010_eService_Create_Claim failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_020_eService_Get_Insureds" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:icon=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;icon:getContactsByClaimAndRoles&gt;&lt;GetContactsByClaimAndRolesRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;&lt;RoleName&gt;insured&lt;/RoleName&gt;&lt;RoleName&gt;secondinsured&lt;/RoleName&gt;&lt;/GetContactsByClaimAndRolesRequest&gt;&lt;/icon:getContactsByClaimAndRoles&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_CONTACT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_020_eService_Get_Insureds failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="First_Name" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;First_Name&quot;|&quot;LB=&lt;FirstName&gt;&quot;|&quot;RB=&lt;/FirstName&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">First_Name</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;FirstName&gt;(.*?)&lt;/FirstName&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Last_Name" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Last_Name&quot;|&quot;LB=&lt;LastName&gt;&quot;|&quot;RB=&lt;/LastName&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Last_Name</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;LastName&gt;(.*?)&lt;/LastName&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Insured_ID" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Insured_ID&quot;|&quot;LB=&lt;Contact xsi:type=\&quot;do:Person\&quot;&gt;&lt;Id&gt;&quot;|&quot;RB=&lt;/Id&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Insured_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Contact xsi:type=\&quot;do:Person\&quot;&gt;&lt;Id&gt;(.*?)&lt;/Id&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_020_eService_Get_Insureds failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_030_eService_Create_Reporter_Role" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:icon=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;icon:createRole&gt;&lt;CreateRoleRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;ContactId&gt;${Insured_ID}&lt;/ContactId&gt;&lt;Role&gt;&lt;RoleName&gt;reporter&lt;/RoleName&gt;&lt;Active&gt;true&lt;/Active&gt;&lt;/Role&gt;&lt;/CreateRoleRequest&gt;&lt;/icon:createRole&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_CONTACT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_030_eService_Create_Reporter_Role failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_030_eService_Create_Reporter_Role failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_040_eService_Update_Contact" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:icon=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:do=&quot;http://pm.lmig.com/cl/contact/model/service/operation/updatecontact&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;icon:updateContact&gt;&lt;UpdateContactRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;Contact xsi:type=&quot;do:Person&quot;&gt;&lt;Id&gt;${Insured_ID}&lt;/Id&gt;&lt;ReceiveEmailInd&gt;false&lt;/ReceiveEmailInd&gt;&lt;PrimaryContactId&gt;${Insured_ID}&lt;/PrimaryContactId&gt;&lt;PreferredInd&gt;false&lt;/PreferredInd&gt;&lt;FirstName&gt;${First_Name}&lt;/FirstName&gt;&lt;LastName&gt;${Last_Name}&lt;/LastName&gt;&lt;/Contact&gt;&lt;/UpdateContactRequest&gt;&lt;/icon:updateContact&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_CONTACT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_040_eService_Update_Contact failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_040_eService_Update_Contact failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_050_eService_Get_Phone_Type" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ity=&quot;http://pm.lmig.com/cl/TypelistServiceMediationLibrary/iTypelistServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ity:getTypelistByNameAndFilter&gt;&lt;GetTypelistByNameAndFilterRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;TypelistName&gt;PrimaryPhoneType&lt;/TypelistName&gt;&lt;/GetTypelistByNameAndFilterRequest&gt;&lt;/ity:getTypelistByNameAndFilter&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_TYPELIST}/TypelistServiceMediationModuleWeb/sca/TypelistServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_TYPELIST}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_050_eService_Get_Phone_Type failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_050_eService_Get_Phone_Type failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_060_eService_Create_Reporter_Phone" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:icon=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:do=&quot;http://pm.lmig.com/cl/contact/model/domain&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;icon:createContactMethod&gt;&lt;CreateContactMethodRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;ContactId&gt;${Insured_ID}&lt;/ContactId&gt;&lt;ContactMethod xsi:type=&quot;do:Phone&quot; type=&quot;home&quot;&gt;&lt;PrimaryInd&gt;true&lt;/PrimaryInd&gt;&lt;PhoneNumber&gt;555-123-1234&lt;/PhoneNumber&gt;&lt;/ContactMethod&gt;&lt;/CreateContactMethodRequest&gt;&lt;/icon:createContactMethod&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_CONTACT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_060_eService_Create_Reporter_Phone failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_060_eService_Create_Reporter_Phone failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_070_eService_Create_Reporter_Email" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:icon=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:do=&quot;http://pm.lmig.com/cl/contact/model/domain&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;icon:createContactMethod&gt;&lt;CreateContactMethodRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;ContactId&gt;${Insured_ID}&lt;/ContactId&gt;&lt;ContactMethod xsi:type=&quot;do:Email&quot;&gt;&lt;PrimaryInd&gt;true&lt;/PrimaryInd&gt;&lt;EmailAddress&gt;nobody@libertymutual.com&lt;/EmailAddress&gt;&lt;/ContactMethod&gt;&lt;/CreateContactMethodRequest&gt;&lt;/icon:createContactMethod&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_CONTACT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_070_eService_Create_Reporter_Email failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_070_eService_Create_Reporter_Email failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_080_eService_Update_Claim" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ifn=&quot;http://pm.lmig.com/cl/FNOLMediationLibrary/iFNOLServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ifn:updateClaim&gt;&lt;UpdateClaimRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;Claim&gt;&lt;Id&gt;${Claim_ID}&lt;/Id&gt;&lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;&lt;HowReported&gt;eService&lt;/HowReported&gt;&lt;LossDate&gt;${DateOfLoss}T12:12:00.000Z&lt;/LossDate&gt;&lt;LossCategory&gt;waterprop&lt;/LossCategory&gt;&lt;LossCause&gt;otherWaterprop&lt;/LossCause&gt;&lt;LossDescription&gt;TP115 eService Property Water Other Damage Claim&lt;/LossDescription&gt;&lt;LossLocation&gt;&lt;AddressLine1&gt;34 Boylston Street&lt;/AddressLine1&gt;&lt;City&gt;Boston&lt;/City&gt;&lt;State&gt;MA&lt;/State&gt;&lt;Country&gt;US&lt;/Country&gt;&lt;/LossLocation&gt;&lt;LossType&gt;pr&lt;/LossType&gt;&lt;ReportedDate&gt;${DateOfLoss}&lt;/ReportedDate&gt;&lt;/Claim&gt;&lt;/UpdateClaimRequest&gt;&lt;/ifn:updateClaim&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_FNOL}/FNOLMediationModuleWeb/sca/FNOLServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_FNOL}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_080_eService_Update_Claim failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_080_eService_Update_Claim failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_090_eService_Get_LM_Damage_Duration_Type" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ity=&quot;http://pm.lmig.com/cl/TypelistServiceMediationLibrary/iTypelistServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ity:getTypelistByNameAndFilter&gt;&lt;GetTypelistByNameAndFilterRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;TypelistName&gt;LM_DamageDurationType&lt;/TypelistName&gt;&lt;/GetTypelistByNameAndFilterRequest&gt;&lt;/ity:getTypelistByNameAndFilter&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_TYPELIST}/TypelistServiceMediationModuleWeb/sca/TypelistServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_TYPELIST}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_090_eService_Get_LM_Damage_Duration_Type failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_090_eService_Get_LM_Damage_Duration_Type failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_100_eService_Create_Claim_Damage" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ifn=&quot;http://pm.lmig.com/cl/FNOLMediationLibrary/iFNOLServiceExport&quot; xmlns:do=&quot;http://pm.lmig.com/cl/fnol/model/domain&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ifn:createClaimDamage&gt;&lt;CreateClaimDamageRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;&lt;ClaimDamage xsi:type=&quot;do:WaterPropClaimDamage&quot;&gt;&lt;!--PropClaimDamage Fields--&gt;&lt;LossFromApplianceInd&gt;false&lt;/LossFromApplianceInd&gt;&lt;RecentWorkNearLossInd&gt;false&lt;/RecentWorkNearLossInd&gt;&lt;!--subtype fields--&gt;&lt;DurationWaterDamage&gt;lessthantwoweeks&lt;/DurationWaterDamage&gt;&lt;SourceOfWaterStoppedInd&gt;true&lt;/SourceOfWaterStoppedInd&gt;&lt;/ClaimDamage&gt;&lt;/CreateClaimDamageRequest&gt;&lt;/ifn:createClaimDamage&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_FNOL}/FNOLMediationModuleWeb/sca/FNOLServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_FNOL}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_100_eService_Create_Claim_Damage failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_100_eService_Create_Claim_Damage failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_110_eService_LM_Floor_Location_Type" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ity=&quot;http://pm.lmig.com/cl/TypelistServiceMediationLibrary/iTypelistServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ity:getTypelistByNameAndFilter&gt;&lt;GetTypelistByNameAndFilterRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;TypelistName&gt;LM_FloorLocationType&lt;/TypelistName&gt;&lt;/GetTypelistByNameAndFilterRequest&gt;&lt;/ity:getTypelistByNameAndFilter&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_TYPELIST}/TypelistServiceMediationModuleWeb/sca/TypelistServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_TYPELIST}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_110_eService_LM_Floor_Location_Type failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_110_eService_LM_Floor_Location_Type failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_120_eService_LM_Floor_Type" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ity=&quot;http://pm.lmig.com/cl/TypelistServiceMediationLibrary/iTypelistServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ity:getTypelistByNameAndFilter&gt;&lt;GetTypelistByNameAndFilterRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;TypelistName&gt;LM_FloorType&lt;/TypelistName&gt;&lt;/GetTypelistByNameAndFilterRequest&gt;&lt;/ity:getTypelistByNameAndFilter&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_TYPELIST}/TypelistServiceMediationModuleWeb/sca/TypelistServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_TYPELIST}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_120_eService_LM_Floor_Type failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_120_eService_LM_Floor_Type failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_130_eService_Get_LM_Number_Of_Type" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ity=&quot;http://pm.lmig.com/cl/TypelistServiceMediationLibrary/iTypelistServiceExport&quot;&gt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ity:getTypelistByNameAndFilter&gt;&lt;GetTypelistByNameAndFilterRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;TypelistName&gt;LM_NumberOfType&lt;/TypelistName&gt;&lt;Filter&gt;Default&lt;/Filter&gt;&lt;/GetTypelistByNameAndFilterRequest&gt;&lt;/ity:getTypelistByNameAndFilter&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_TYPELIST}/TypelistServiceMediationModuleWeb/sca/TypelistServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_TYPELIST}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_130_eService_Get_LM_Number_Of_Type failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_130_eService_Get_LM_Number_Of_Type failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_140_eService_Create_Dwelling_Incident" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:iin=&quot;http://pm.lmig.com/cl/IncidentMediationLibrary/iIncidentServiceImport&quot; xmlns:ser=&quot;http://pm.lmig.com/cl/incident/model/service&quot; xmlns:do=&quot;http://pm.lmig.com/cl/incident/model/domain&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;iin:createIncident&gt;&lt;ser:CreateIncidentRequest&gt;&lt;RequestId/&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID/&gt;&lt;Incident xsi:type=&quot;do:DwellingIncident&quot;&gt;&lt;IncidentDamage xsi:type=&quot;do:WaterPropIncidentDamage&quot;&gt;&lt;!--Property Incident Damage Fields--&gt;&lt;StandingWaterInd&gt;false&lt;/StandingWaterInd&gt;&lt;WaterStainsOnlyInd&gt;true&lt;/WaterStainsOnlyInd&gt;&lt;HabitableInd&gt;true&lt;/HabitableInd&gt;&lt;FloorOfOrigin&gt;main&lt;/FloorOfOrigin&gt;&lt;FloorsAffected&gt;none&lt;/FloorsAffected&gt;&lt;NumRoomsImpacted&gt;one&lt;/NumRoomsImpacted&gt;&lt;/IncidentDamage&gt;&lt;Description&gt;TP115 eService Property Water Other Damage Claim Incident&lt;/Description&gt;&lt;/Incident&gt;&lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;&lt;/ser:CreateIncidentRequest&gt;&lt;/iin:createIncident&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_INCIDENT}/IncidentMediationModuleWeb/sca/IncidentServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_INCIDENT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_140_eService_Create_Dwelling_Incident failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Incident_Description" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Incident_Description&quot;|&quot;LB=&lt;Description&gt;&quot;|&quot;RB=&lt;/Description&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Incident_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Incident_ID" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Incident_ID&quot;|&quot;LB=&lt;Incident xsi:type=\&quot;do:DwellingIncident\&quot;&gt;&lt;Id&gt;&quot;|&quot;RB=&lt;/Id&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Incident_ID</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Incident xsi:type=\&quot;do:DwellingIncident\&quot;&gt;&lt;Id&gt;(.*?)&lt;/Id&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_140_eService_Create_Dwelling_Incident failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-277899802">&lt;status&gt;success&lt;/status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_150_eService_Update_Claim" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ifn=&quot;http://pm.lmig.com/cl/FNOLMediationLibrary/iFNOLServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ifn:updateClaim&gt;&lt;UpdateClaimRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;Claim&gt;&lt;Id&gt;${Claim_ID}&lt;/Id&gt;&lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;&lt;HowReported&gt;eService&lt;/HowReported&gt;&lt;LossDate&gt;${DateOfLoss}T18:12:00.000Z&lt;/LossDate&gt;&lt;LossCategory&gt;waterprop&lt;/LossCategory&gt;&lt;LossCause&gt;otherWaterprop&lt;/LossCause&gt;&lt;LossDescription&gt;TP115 eService Property Water Other Damage Claim&lt;/LossDescription&gt;&lt;LossLocation&gt;&lt;AddressLine1&gt;34 Boylston Street&lt;/AddressLine1&gt;&lt;City&gt;Boston&lt;/City&gt;&lt;State&gt;MA&lt;/State&gt;&lt;Country&gt;US&lt;/Country&gt;&lt;/LossLocation&gt;&lt;LossType&gt;pr&lt;/LossType&gt;&lt;ReportedDate&gt;${DateOfLoss}&lt;/ReportedDate&gt;&lt;MoldInd&gt;false&lt;/MoldInd&gt;&lt;/Claim&gt;&lt;/UpdateClaimRequest&gt;&lt;/ifn:updateClaim&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_FNOL}/FNOLMediationModuleWeb/sca/FNOLServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_FNOL}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_150_eService_Update_Claim failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_150_eService_Update_Claim failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_160_eService_Get_Yes_No" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ity=&quot;http://pm.lmig.com/cl/TypelistServiceMediationLibrary/iTypelistServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ity:getTypelistByNameAndFilter&gt;&lt;GetTypelistByNameAndFilterRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;TypelistName&gt;YesNo&lt;/TypelistName&gt;&lt;Filter&gt;YesNoUnknown&lt;/Filter&gt;&lt;/GetTypelistByNameAndFilterRequest&gt;&lt;/ity:getTypelistByNameAndFilter&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_TYPELIST}/TypelistServiceMediationModuleWeb/sca/TypelistServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_TYPELIST}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_160_eService_Get_Yes_No failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_160_eService_Get_Yes_No failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_170_eService_Update_Incident" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:iin=&quot;http://pm.lmig.com/cl/IncidentMediationLibrary/iIncidentServiceImport&quot; xmlns:ser=&quot;http://pm.lmig.com/cl/incident/model/service&quot; xmlns:do=&quot;http://pm.lmig.com/cl/incident/model/service/operation/updateincident&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;iin:updateIncident&gt;&lt;ser:UpdateIncidentRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;Incident xsi:type=&quot;do:DwellingIncident&quot;&gt;&lt;Id&gt;${Incident_ID}&lt;/Id&gt;&lt;Description&gt;TP115 eService Property Water Other Damage Claim Incident&lt;/Description&gt;&lt;EstimatesReceived&gt;no&lt;/EstimatesReceived&gt;&lt;/Incident&gt;&lt;/ser:UpdateIncidentRequest&gt;&lt;/iin:updateIncident&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_INCIDENT}/IncidentMediationModuleWeb/sca/IncidentServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_INCIDENT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_170_eService_Update_Incident failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_170_eService_Update_Incident_No failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-277899802">&lt;status&gt;success&lt;/status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_180_eService_Update_Incident_Damage" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:iin=&quot;http://pm.lmig.com/cl/IncidentMediationLibrary/iIncidentServiceImport&quot; xmlns:ser=&quot;http://pm.lmig.com/cl/incident/model/service&quot; xmlns:do=&quot;http://pm.lmig.com/cl/incident/model/domain&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;iin:updateIncidentDamage&gt;&lt;ser:UpdateIncidentDamageRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;IncidentDamage xsi:type=&quot;do:WaterPropIncidentDamage&quot;&gt;&lt;!--Property Incident Damage Fields--&gt;&lt;StandingWaterInd&gt;false&lt;/StandingWaterInd&gt;&lt;WaterStainsOnlyInd&gt;true&lt;/WaterStainsOnlyInd&gt;&lt;EmsContactedInd&gt;false&lt;/EmsContactedInd&gt;&lt;HabitableInd&gt;true&lt;/HabitableInd&gt;&lt;FloorOfOrigin&gt;main&lt;/FloorOfOrigin&gt;&lt;FloorsAffected&gt;none&lt;/FloorsAffected&gt;&lt;NumRoomsImpacted&gt;one&lt;/NumRoomsImpacted&gt;&lt;RotVisibleInd&gt;false&lt;/RotVisibleInd&gt;&lt;/IncidentDamage&gt;&lt;IncidentId&gt;${Incident_ID}&lt;/IncidentId&gt;&lt;/ser:UpdateIncidentDamageRequest&gt;&lt;/iin:updateIncidentDamage&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_INCIDENT}/IncidentMediationModuleWeb/sca/IncidentServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_INCIDENT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_180_eService_Update_Incident_Damage failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_180_eService_Update_Incident_Damage failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-277899802">&lt;status&gt;success&lt;/status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_190_eService_Create_Contractor" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:icon=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot; xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot; xmlns:do=&quot;http://pm.lmig.com/cl/contact/model/domain&quot; xmlns:im=&quot;http://pm.lmig.com/cl/ContactMediationLibrary/iContactServiceImport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;icon:createContact&gt;&lt;CreateContactRequest&gt;&lt;RequestId/&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID/&gt;&lt;Contact xsi:type=&quot;do:Company&quot;&gt;&lt;Role&gt;&lt;RoleName&gt;contractor&lt;/RoleName&gt;&lt;Active&gt;true&lt;/Active&gt;&lt;/Role&gt;&lt;CompanyName&gt;test contractor&lt;/CompanyName&gt;&lt;PreferredInd&gt;false&lt;/PreferredInd&gt;&lt;/Contact&gt;&lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;&lt;/CreateContactRequest&gt;&lt;/icon:createContact&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CONTACT}/ContactMediationModuleWeb/sca/ContactServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_CONTACT}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_190_eService_Create_Contractor failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_190_eService_Create_Contractor failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_200_eService_Register_Claim" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ifn=&quot;http://pm.lmig.com/cl/FNOLMediationLibrary/iFNOLServiceExport&quot;&gt;&lt;soap:Header/&gt;&lt;soap:Body&gt;&lt;ifn:registerClaim&gt;&lt;RegisterClaimRequest&gt;&lt;RequestId&gt;?&lt;/RequestId&gt;&lt;Requestor&gt;eService&lt;/Requestor&gt;&lt;UserID&gt;?&lt;/UserID&gt;&lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;&lt;/RegisterClaimRequest&gt;&lt;/ifn:registerClaim&gt;&lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_FNOL}/FNOLMediationModuleWeb/sca/FNOLServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_FNOL}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_200_eService_Register_Claim failed - HTTP Reponse not 200 exiting iteration" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_200_eService_Register_Claim failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP115_210_eService_Cancel_Claim" enabled="false">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soap:Envelope xmlns:soap=&quot;http://www.w3.org/2003/05/soap-envelope&quot; xmlns:ifn=&quot;http://pm.lmig.com/cl/FNOLMediationLibrary/iFNOLServiceExport&quot;&gt;   &lt;soap:Header/&gt;   &lt;soap:Body&gt;      &lt;ifn:cancelClaim&gt;         &lt;CancelClaimRequest&gt;            &lt;RequestId&gt;?&lt;/RequestId&gt;            &lt;Requestor&gt;eService&lt;/Requestor&gt;            &lt;UserID&gt;?&lt;/UserID&gt;            &lt;ClaimNumber&gt;${Claim_Number}&lt;/ClaimNumber&gt;         &lt;/CancelClaimRequest&gt;      &lt;/ifn:cancelClaim&gt;   &lt;/soap:Body&gt;&lt;/soap:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_FNOL}/FNOLMediationModuleWeb/sca/FNOLServiceExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/soap+xml; charset=utf-8</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Host</stringProp>
+                <stringProp name="Header.value">${GV_HOSTNAME_FNOL}</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Connection</stringProp>
+                <stringProp name="Header.value">Keep-Alive</stringProp>
+              </elementProp>
+              <elementProp name="" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Description" enabled="true">
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Description</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Description&gt;(.*?)&lt;/Description&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Error_Code" enabled="true">
+            <stringProp name="TestPlan.comments">&quot;Error_Code&quot;|&quot;LB=&lt;Code&gt;&quot;|&quot;RB=&lt;/Code&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+            <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+            <stringProp name="RegexExtractor.refname">Error_Code</stringProp>
+            <stringProp name="RegexExtractor.regex">&lt;Code&gt;(.*?)&lt;/Code&gt;</stringProp>
+            <stringProp name="RegexExtractor.template">$1$</stringProp>
+            <stringProp name="RegexExtractor.default">null</stringProp>
+            <stringProp name="RegexExtractor.match_number">1</stringProp>
+          </RegexExtractor>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP115_210_eService_Cancel_Claim failed - Error Code - ${Error_Code} &amp; Error Desc - ${Error_Description}" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="208995750">&lt;Status&gt;success&lt;/Status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+        <ResultCollector guiclass="SimpleDataWriter" testclass="ResultCollector" testname="Simple Data Writer" enabled="true">
+          <boolProp name="ResultCollector.error_logging">true</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>false</latency>
+              <timestamp>true</timestamp>
+              <success>false</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>true</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>true</responseData>
+              <samplerData>true</samplerData>
+              <xml>true</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>true</responseHeaders>
+              <requestHeaders>true</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <url>true</url>
+              <fileName>true</fileName>
+              <sampleCount>true</sampleCount>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename">${GV_ResultsFilePath}${PATH_SEP}${GV_Release}${PATH_SEP}Execution_${__time(yyyyMMdd-HHmm)}_${GV_TestDataSet}${PATH_SEP}CNG_TP115_eService_FNOL_Water_Other__SimpleDataWriter_${__time(yyyyMMdd_HHMM)}.log</stringProp>
+        </ResultCollector>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

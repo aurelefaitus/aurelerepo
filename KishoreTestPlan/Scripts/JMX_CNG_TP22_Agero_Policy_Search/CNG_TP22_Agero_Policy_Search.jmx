@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.8" jmeter="2.13 r1665067">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="CNG_TP22_Agero_Policy_Search" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">5</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1455260938000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+        <longProp name="ThreadGroup.end_time">0</longProp>
+      </ThreadGroup>
+      <hashTree>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="RUN x ( 1 )" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </LoopController>
+        <hashTree>
+          <GenericController guiclass="LogicControllerGui" testclass="GenericController" testname="-Action" enabled="true">
+            <stringProp name="TestPlan.comments">This section contains the Action part of Loadrunner</stringProp>
+          </GenericController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TP22_010_Agero_Policy_Search" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">true</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="Pol_Serv_Agero_PolcySearch" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:acor=&quot;http://pm.lmig.com/cl/PolicyServicesMediationModule/iAcordPolicySearch&quot;&gt;   &lt;soapenv:Header/&gt;   &lt;soapenv:Body&gt;      &lt;acor:policySearch&gt;     		&lt;ACORD xmlns:xml=&quot;http://www.w3.org/XML/1998/namespace&quot;								xmlns:xsi=&quot;http://www.w3.org/2001/XMLSchema-instance&quot;&gt;							&lt;SignonRq&gt;							&lt;SignonPswd&gt;								&lt;CustId&gt; 						&lt;SPName&gt;Crosscountry&lt;/SPName&gt;							&lt;CustPermId&gt;00007&lt;/CustPermId&gt;						&lt;/CustId&gt;							&lt;CustPswd&gt;								&lt;EncryptionTypeCd&gt;NONE&lt;/EncryptionTypeCd&gt;							&lt;Pswd&gt;Pswd&lt;/Pswd&gt;						&lt;/CustPswd&gt;					&lt;/SignonPswd&gt;						&lt;ClientDt&gt;${TODAYS_DATE}T00:00:00.000&lt;/ClientDt&gt;						&lt;CustLangPref&gt;token&lt;/CustLangPref&gt;						&lt;ClientApp&gt;					&lt;Org&gt;Org&lt;/Org&gt;						&lt;Name&gt;Name&lt;/Name&gt;						&lt;Version&gt;token&lt;/Version&gt;					&lt;/ClientApp&gt;					&lt;/SignonRq&gt;					&lt;InsuranceSvcRq&gt;							&lt;RqUID&gt;00000000-0000-0000-0000-000000000000&lt;/RqUID&gt; 				&lt;PolicyInqRq&gt;							&lt;RqUID&gt;00000000-0000-0000-0000-000000000000&lt;/RqUID&gt;						&lt;TransactionRequestDt&gt;2010-06-22T00:00:00.000&lt;/TransactionRequestDt&gt;							&lt;CurCd&gt;token&lt;/CurCd&gt;							&lt;AsOfDt&gt;2009-05-05&lt;/AsOfDt&gt;						&lt;Requestor&gt;								&lt;ClaimsParty&gt;&lt;/ClaimsParty&gt;						&lt;/Requestor&gt;						&lt;PolicyInqInfo&gt;								&lt;PartialPolicy&gt;								&lt;PolicyNumber&gt;${POLICY_NUMBER}&lt;/PolicyNumber&gt;							&lt;LOBCd&gt;AUTOP&lt;/LOBCd&gt;						&lt;/PartialPolicy&gt;						&lt;/PolicyInqInfo&gt;					&lt;PartyInqInfo&gt;						&lt;InsuredOrPrincipal&gt;											&lt;GeneralPartyInfo&gt;											&lt;Communications&gt;												&lt;PhoneInfo&gt;												&lt;CommunicationUseCd&gt;Home&lt;/CommunicationUseCd&gt;											&lt;PhoneNumber&gt;+702-363-3103&lt;/PhoneNumber&gt; 									&lt;/PhoneInfo&gt;									&lt;/Communications&gt;									&lt;/GeneralPartyInfo&gt;										&lt;/InsuredOrPrincipal&gt;								&lt;/PartyInqInfo&gt;								&lt;/PolicyInqRq&gt;						&lt;/InsuranceSvcRq&gt;		&lt;/ACORD&gt;      &lt;/acor:policySearch&gt;   &lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">https://${SERVER}/PolicyServicesMediationModuleWeb/sca/CrosscountryPolicySearchWSExport</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient3.1</stringProp>
+                <boolProp name="HTTPSampler.image_parser">true</boolProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">content-type</stringProp>
+                      <stringProp name="Header.value">text/xml</stringProp>
+                    </elementProp>
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">SOAPAction</stringProp>
+                      <stringProp name="Header.value">https://${SERVER}/PolicyServicesMediationModuleWeb/sca/CrosscountryPolicySearchWSExport</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XML_ResponseStatus" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;XML_ResponseStatus&quot;|&quot;LB=&lt;_xml:MsgStatusCd&gt;&quot;|&quot;RB=&lt;/_xml:MsgStatusCd&gt;&quot;|&quot;Search=All&quot;|&quot;IgnoreRedirections=Yes&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">XML_ResponseStatus</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;_xml:MsgStatusCd&gt;(.*?)&lt;/_xml:MsgStatusCd&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Regular Expression Extractor-responsecode" enabled="true">
+                  <stringProp name="RegexExtractor.useHeaders">code</stringProp>
+                  <stringProp name="RegexExtractor.refname">responsecode</stringProp>
+                  <stringProp name="RegexExtractor.regex">(\d+)</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">0</stringProp>
+                  <stringProp name="RegexExtractor.match_number"></stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">import java.text.*;
+SimpleDateFormat sdf = new SimpleDateFormat(&quot;yyyy-MM-dd&quot;);
+Calendar C_currenttime= Calendar.getInstance();
+vars.put(&quot;TODAYS_DATE&quot;,sdf.format(C_currenttime.getTime()).toString());
+//log.info(&quot;THe valie of time:&quot;+vars.get(&quot;TODAYS_DATE&quot;));</stringProp>
+                </BeanShellPreProcessor>
+                <hashTree/>
+                <BeanShellPostProcessor guiclass="TestBeanGUI" testclass="BeanShellPostProcessor" testname="BeanShell PostProcessor" enabled="true">
+                  <boolProp name="resetInterpreter">false</boolProp>
+                  <stringProp name="parameters"></stringProp>
+                  <stringProp name="filename"></stringProp>
+                  <stringProp name="script">int rescode=Integer.parseInt(vars.get(&quot;responsecode&quot;));
+String stats= vars.get(&quot;XML_ResponseStatus&quot;);
+if (rescode &gt;= 200 &amp;&amp; rescode &lt; 400)
+{	//error if no results found
+	if (!stats.equals(&quot;Success&quot;))
+	{	
+		//  search did not return any results
+		log.error(&quot;Transaction Name :TP22_010_Agero_Policy_Search##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+		prev.setSuccessful(false);
+		ctx.setRestartNextLoop(true);
+		
+	}
+	else 
+	{
+		// search successfull
+		prev.setSuccessful(true);
+	}
+}
+else
+{
+// Unexpected result  from server
+	log.error(&quot;Transaction Name :TP22_010_Agero_Policy_Search##&quot;+&quot;Request XML:&quot;+prev.getSamplerData()+&quot;##&quot;+&quot;HTTP Response Code:&quot;+vars.get(&quot;responsecode&quot;)+&quot;##&quot;+&quot;Response From Server : &quot;+prev.getResponseDataAsString());
+	prev.setSuccessful(false);
+	ctx.setRestartNextLoop(true);
+}
+</stringProp>
+                </BeanShellPostProcessor>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+        <UserParameters guiclass="UserParametersGui" testclass="UserParameters" testname="User Defined Parameters" enabled="true">
+          <boolProp name="UserParameters.per_iteration">false</boolProp>
+          <collectionProp name="UserParameters.names"/>
+          <collectionProp name="UserParameters.thread_values">
+            <collectionProp name="1"/>
+          </collectionProp>
+        </UserParameters>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="Pacing" enabled="true">
+          <stringProp name="ConstantTimer.delay">1</stringProp>
+          <stringProp name="TestPlan.comments">   Converting seconds to milliseconds - 60s x 1000</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename">SummReport_CNG_TP22_Agero_Policy_Search.csv</stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>false</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>false</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <threadCounts>true</threadCounts>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="filename">SERVER.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CSV Data Set Config" enabled="true">
+          <stringProp name="filename">TP22.csv</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="delimiter">,</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

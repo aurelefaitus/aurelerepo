@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_CNG_TP87_CTI_Call_Routing_By_Phone_Number" enabled="true"/>
+      <hashTree>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+          <stringProp name="ConstantTimer.delay">${CNG_TP87_CTI_Call_Routing_By_Phone_Number_ThinkTime}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="Pacing" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">${CNG_TP87_CTI_Call_Routing_By_Phone_Number_Pacing}</stringProp>
+        </TestAction>
+        <hashTree/>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="CookieManager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">false</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="CLAIM_PHONE_NUM CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP87_CTI_Call_Routing_By_Phone_Number${PATH_SEP}CLAIM_PHONE_NUM.CSV</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">CLAIM_PHONE_NUM</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="VENDOR_PHONE_NUM CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP87_CTI_Call_Routing_By_Phone_Number${PATH_SEP}VENDOR_PHONE_NUM.CSV</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">VENDOR_PHONE_NUM</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="SERVER CSV Data Set Config" enabled="false">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP87_CTI_Call_Routing_By_Phone_Number${PATH_SEP}SERVER.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames"></stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="FNOL_PHONE_NUM CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP87_CTI_Call_Routing_By_Phone_Number${PATH_SEP}FNOL_PHONE_NUM.CSV</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">FNOL_PHONE_NUM</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <IfController guiclass="IfControllerPanel" testclass="IfController" testname="&quot;${VENDOR_PHONE_NUM}&quot; != &quot;PHONE_NUM&quot;" enabled="true">
+          <stringProp name="TestPlan.comments">Skip Header</stringProp>
+          <stringProp name="IfController.condition">&quot;${VENDOR_PHONE_NUM}&quot; != &quot;PHONE_NUM&quot;</stringProp>
+          <boolProp name="IfController.evaluateAll">false</boolProp>
+        </IfController>
+        <hashTree>
+          <RandomVariableConfig guiclass="TestBeanGUI" testclass="RandomVariableConfig" testname="Random Variable" enabled="true">
+            <stringProp name="variableName">RANDOMNUMBER</stringProp>
+            <stringProp name="outputFormat"></stringProp>
+            <stringProp name="minimumValue">1</stringProp>
+            <stringProp name="maximumValue">100</stringProp>
+            <stringProp name="randomSeed"></stringProp>
+            <boolProp name="perThread">false</boolProp>
+          </RandomVariableConfig>
+          <hashTree/>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${RANDOMNUMBER} &lt;= 10" enabled="true">
+            <stringProp name="IfController.condition">${RANDOMNUMBER} &lt;= 10</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TP87_010_CTI_Call_Routing_By_Vendor" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">true</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CTI_Call_Routing_By_Phone_Number" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ict=&quot;http://CTIMediationModule/iCTIServices&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;&lt;ict:findCallRoutingInfoByPhoneNumber&gt;&lt;findCallRoutingInfoByPhoneNumberRequest&gt;&lt;phoneNumber&gt;${VENDOR_PHONE_NUM}&lt;/phoneNumber&gt;&lt;/findCallRoutingInfoByPhoneNumberRequest&gt;&lt;/ict:findCallRoutingInfoByPhoneNumber&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CIT}/CTIMediationModuleWeb/sca/AvayaServicesWSExport</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.image_parser">true</boolProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">SOAPAction</stringProp>
+                      <stringProp name="Header.value">https://${GV_HOSTNAME_CIT}/CTIMediationModuleWeb/sca/AvayaServicesWSExport</stringProp>
+                    </elementProp>
+                    <elementProp name="" elementType="Header">
+                      <stringProp name="Header.name">content-type</stringProp>
+                      <stringProp name="Header.value">text/xml</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="EXPOSURE_Count Assertion" enabled="false">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="4325426">&lt;exposureCount&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XML_ErrorMessage" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;XML_ErrorMessage&quot;|&quot;LB=&lt;_01:ErrorText&gt;&quot;|&quot;RB=&lt;/_01:ErrorText&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">XML_ErrorMessage</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;_01:ErrorText&gt;(.*?)&lt;/_01:ErrorText&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Response_ErrorMessage" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;Response_ErrorMessage&quot;|&quot;LB=&lt;description&gt;&quot;|&quot;RB=&lt;/description&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">Response_ErrorMessage</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;description&gt;(.*?)&lt;/description&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="POLICY_Count Assertion" enabled="false">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1479719709">&lt;policyCount&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">16</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CNG_TP87_CTI_Call_Routing_By_Phone_Number - ERROR for vendor telephone number: %s. Error message:  ${VENDOR_PHONE_NUM} , ${Response_ErrorMessage}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="365319063">&lt;resultType&gt;ERROR&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CNG_TP87_CTI_Call_Routing_By_Phone_Number - OVERFLOW response received for vendor telephone number: ${VENDOR_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="544149639">&lt;resultType&gt;OVERFLOW&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CNG_TP87_CTI_Call_Routing_By_Phone_Number NO MATCH response received for vendor telephone number: ${VENDOR_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="887455875">&lt;resultType&gt;NO MATCH&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${RANDOMNUMBER} &gt; 10 &amp;&amp; ${RANDOMNUMBER} &lt; 51" enabled="true">
+            <stringProp name="IfController.condition">${RANDOMNUMBER} &gt; 10 &amp;&amp; ${RANDOMNUMBER} &lt; 51</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TP87_010_CTI_Call_Routing_By_Policy" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">true</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CTI_Call_Routing_By_Phone_Number" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ict=&quot;http://CTIMediationModule/iCTIServices&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;&lt;ict:findCallRoutingInfoByPhoneNumber&gt;&lt;findCallRoutingInfoByPhoneNumberRequest&gt;&lt;phoneNumber&gt;${FNOL_PHONE_NUM}&lt;/phoneNumber&gt;&lt;/findCallRoutingInfoByPhoneNumberRequest&gt;&lt;/ict:findCallRoutingInfoByPhoneNumber&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CIT}/CTIMediationModuleWeb/sca/AvayaServicesWSExport</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.image_parser">true</boolProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">SOAPAction</stringProp>
+                      <stringProp name="Header.value">https://${GV_HOSTNAME_CIT}/CTIMediationModuleWeb/sca/AvayaServicesWSExport</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XML_ErrorMessage" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;XML_ErrorMessage&quot;|&quot;LB=&lt;_01:ErrorText&gt;&quot;|&quot;RB=&lt;/_01:ErrorText&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">XML_ErrorMessage</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;_01:ErrorText&gt;(.*?)&lt;/_01:ErrorText&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Response_ErrorMessage" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;Response_ErrorMessage&quot;|&quot;LB=&lt;description&gt;&quot;|&quot;RB=&lt;/description&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">Response_ErrorMessage</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;description&gt;(.*?)&lt;/description&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="POLICY_Count Assertion" enabled="false">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1479719709">&lt;policyCount&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">16</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Policy - EXPOSURE response received for FNOL telephone number: ${FNOL_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="4325426">&lt;exposureCount&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Policy - NO MATCH response received for vendor telephone number: ${VENDOR_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="887455875">&lt;resultType&gt;NO MATCH&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Policy - OVERFLOW response received for vendor telephone number: ${VENDOR_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="544149639">&lt;resultType&gt;OVERFLOW&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Policy - ERROR for vendor telephone number: %s. Error message:  ${VENDOR_PHONE_NUM} , ${Response_ErrorMessage}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="365319063">&lt;resultType&gt;ERROR&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+          <IfController guiclass="IfControllerPanel" testclass="IfController" testname="${RANDOMNUMBER} &gt;= 51 &amp;&amp; ${RANDOMNUMBER} &lt;= 100" enabled="true">
+            <stringProp name="IfController.condition">${RANDOMNUMBER} &gt;= 51 &amp;&amp; ${RANDOMNUMBER} &lt;= 100</stringProp>
+            <boolProp name="IfController.evaluateAll">false</boolProp>
+            <boolProp name="IfController.useExpression">true</boolProp>
+          </IfController>
+          <hashTree>
+            <TransactionController guiclass="TransactionControllerGui" testclass="TransactionController" testname="TP87_010_CTI_Call_Routing_By_Exposure" enabled="true">
+              <boolProp name="TransactionController.includeTimers">false</boolProp>
+              <boolProp name="TransactionController.parent">true</boolProp>
+            </TransactionController>
+            <hashTree>
+              <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="CTI_Call_Routing_By_Phone_Number" enabled="true">
+                <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+                <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+                  <collectionProp name="Arguments.arguments">
+                    <elementProp name="" elementType="HTTPArgument">
+                      <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                      <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:ict=&quot;http://CTIMediationModule/iCTIServices&quot;&gt;&lt;soapenv:Header/&gt;&lt;soapenv:Body&gt;&lt;ict:findCallRoutingInfoByPhoneNumber&gt;&lt;findCallRoutingInfoByPhoneNumberRequest&gt;&lt;phoneNumber&gt;${CLAIM_PHONE_NUM}&lt;/phoneNumber&gt;&lt;/findCallRoutingInfoByPhoneNumberRequest&gt;&lt;/ict:findCallRoutingInfoByPhoneNumber&gt;&lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                      <stringProp name="Argument.metadata">=</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </elementProp>
+                <stringProp name="HTTPSampler.domain"></stringProp>
+                <stringProp name="HTTPSampler.port"></stringProp>
+                <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+                <stringProp name="HTTPSampler.response_timeout"></stringProp>
+                <stringProp name="HTTPSampler.protocol">https</stringProp>
+                <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+                <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_CIT}/CTIMediationModuleWeb/sca/AvayaServicesWSExport</stringProp>
+                <stringProp name="HTTPSampler.method">POST</stringProp>
+                <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+                <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+                <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+                <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+                <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+                <boolProp name="HTTPSampler.image_parser">true</boolProp>
+                <boolProp name="HTTPSampler.monitor">false</boolProp>
+                <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+              </HTTPSamplerProxy>
+              <hashTree>
+                <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+                  <collectionProp name="HeaderManager.headers">
+                    <elementProp name="Accept-Language" elementType="Header">
+                      <stringProp name="Header.name">SOAPAction</stringProp>
+                      <stringProp name="Header.value">https://${GV_HOSTNAME_CIT}/CTIMediationModuleWeb/sca/AvayaServicesWSExport</stringProp>
+                    </elementProp>
+                    <elementProp name="content-type" elementType="Header">
+                      <stringProp name="Header.name">content-type</stringProp>
+                      <stringProp name="Header.value">text/xml</stringProp>
+                    </elementProp>
+                  </collectionProp>
+                </HeaderManager>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="XML_ErrorMessage" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;XML_ErrorMessage&quot;|&quot;LB=&lt;_01:ErrorText&gt;&quot;|&quot;RB=&lt;/_01:ErrorText&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">XML_ErrorMessage</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;_01:ErrorText&gt;(.*?)&lt;/_01:ErrorText&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <RegexExtractor guiclass="RegexExtractorGui" testclass="RegexExtractor" testname="Response_ErrorMessage" enabled="true">
+                  <stringProp name="TestPlan.comments">&quot;Response_ErrorMessage&quot;|&quot;LB=&lt;description&gt;&quot;|&quot;RB=&lt;/description&gt;&quot;|&quot;Search=Body&quot;|&quot;IgnoreRedirections=Yes&quot;|&quot;NotFound=WARNING&quot;|</stringProp>
+                  <stringProp name="RegexExtractor.useHeaders">false</stringProp>
+                  <stringProp name="RegexExtractor.refname">Response_ErrorMessage</stringProp>
+                  <stringProp name="RegexExtractor.regex">&lt;description&gt;(.*?)&lt;/description&gt;</stringProp>
+                  <stringProp name="RegexExtractor.template">$1$</stringProp>
+                  <stringProp name="RegexExtractor.default">null</stringProp>
+                  <stringProp name="RegexExtractor.match_number">1</stringProp>
+                </RegexExtractor>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="POLICY_Count Assertion" enabled="false">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="1479719709">&lt;policyCount&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">16</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Exposure - EXPOSURE response received for FNOL telephone number: ${FNOL_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="4325426">&lt;exposureCount&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Exposure - ERROR for FNOL telephone number: ${FNOL_PHONE_NUM}. Error message: ${Response_ErrorMessage}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="365319063">&lt;resultType&gt;ERROR&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Exposure - OVERFLOW response received for FNOL telephone number: ${FNOL_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="544149639">&lt;resultType&gt;OVERFLOW&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+                <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="TP87_010_CTI_Call_Routing_By_Exposure - NO MATCH response received for FNOL telephone number: ${FNOL_PHONE_NUM}" enabled="true">
+                  <collectionProp name="Asserion.test_strings">
+                    <stringProp name="887455875">&lt;resultType&gt;NO MATCH&lt;/resultType&gt;</stringProp>
+                  </collectionProp>
+                  <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+                  <boolProp name="Assertion.assume_success">false</boolProp>
+                  <intProp name="Assertion.test_type">20</intProp>
+                </ResponseAssertion>
+                <hashTree/>
+              </hashTree>
+            </hashTree>
+          </hashTree>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="2.9" jmeter="3.0 r1743807">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Test Plan" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="TF_CNG_TP32_Pol_Serv_SafeLite_Cov_Update" enabled="true"/>
+      <hashTree>
+        <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+          <collectionProp name="CookieManager.cookies"/>
+          <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        </CookieManager>
+        <hashTree/>
+        <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+          <boolProp name="clearEachIteration">true</boolProp>
+          <boolProp name="useExpires">false</boolProp>
+        </CacheManager>
+        <hashTree/>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="Accept-Language" elementType="Header">
+              <stringProp name="Header.name">SOAPAction</stringProp>
+              <stringProp name="Header.value">https://${GV_HOSTNAME_POLICY}/FNOLServicesMediationModuleWeb/sca/SafeliteClaimRegistrationWSExport</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">text/xml; charset=utf-8</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="TP32 - CSV Data Set Config" enabled="true">
+          <stringProp name="delimiter">,</stringProp>
+          <stringProp name="fileEncoding"></stringProp>
+          <stringProp name="filename">${test_path}..${PATH_SEP}Scripts${PATH_SEP}JMX_CNG_TP32_Pol_Serv_SafeLite_Cov_Update${PATH_SEP}TP32.csv</stringProp>
+          <boolProp name="quotedData">false</boolProp>
+          <boolProp name="recycle">true</boolProp>
+          <stringProp name="shareMode.all">shareMode</stringProp>
+          <boolProp name="stopThread">false</boolProp>
+          <stringProp name="variableNames">POLICYNUMBER,CLAIMNUMBER,FIRSTNAME,LASTNAME,ADDRESSSTREET,ADDRESSCITY,ADDRESSSTATE,ADDRESSZIP,HOMEPHONE,VEHICLEMAKE,VEHICLEMODEL,VEHICLEVIN,VEHICLEYEAR,VEHICLEREG,VEHICLESTATE</stringProp>
+          <stringProp name="shareMode">shareMode.all</stringProp>
+          <stringProp name="TestPlan.comments">POLICYNUMBER,CLAIMNUMBER,FIRSTNAME,LASTNAME,ADDRESSSTREET,ADDRESSCITY,ADDRESSSTATE,ADDRESSZIP,HOMEPHONE,VEHICLEMAKE,VEHICLEMODEL,VEHICLEVIN,VEHICLEYEAR,VEHICLEREG,VEHICLESTATE</stringProp>
+        </CSVDataSet>
+        <hashTree/>
+        <ConstantTimer guiclass="ConstantTimerGui" testclass="ConstantTimer" testname="ThinkTime" enabled="true">
+          <stringProp name="ConstantTimer.delay">${CNG_TP32_Pol_Serv_SafeLite_Cov_Update_ThinkTime}</stringProp>
+        </ConstantTimer>
+        <hashTree/>
+        <TestAction guiclass="TestActionGui" testclass="TestAction" testname="PacingTime" enabled="true">
+          <intProp name="ActionProcessor.action">1</intProp>
+          <intProp name="ActionProcessor.target">0</intProp>
+          <stringProp name="ActionProcessor.duration">${CNG_TP32_Pol_Serv_SafeLite_Cov_Update_Pacing}</stringProp>
+        </TestAction>
+        <hashTree/>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="TP32_010_Pol_Serv_SafeLite_Cov_Update" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">&lt;soapenv:Envelope xmlns:soapenv=&quot;http://schemas.xmlsoap.org/soap/envelope/&quot; xmlns:icov=&quot;http://pm.lmig.com/cl/PolicyServicesMediationModule/iCoverageUpdateXML&quot;&gt;   &lt;soapenv:Header/&gt;   &lt;soapenv:Body&gt;      &lt;icov:coverageUpdateNotification&gt;     &lt;LMCoverageUpdateNotification&gt;&lt;requestIdentifier&gt;99999999-9999-9999-9999-999999999999&lt;/requestIdentifier&gt;&lt;vendorIdentifier&gt;Safelite&lt;/vendorIdentifier&gt;&lt;updateNotification&gt;&lt;policyNumber&gt;${POLICYNUMBER}&lt;/policyNumber&gt;&lt;caseNumber&gt;1&lt;/caseNumber&gt;&lt;claimNumber&gt;${CLAIMNUMBER}&lt;/claimNumber&gt;&lt;exposureOrderNumber&gt;0001&lt;/exposureOrderNumber&gt;&lt;referralDate&gt;2010-12-01T00:00:00.000-04:00&lt;/referralDate&gt;&lt;insuredPersons&gt;    &lt;prefix&gt;ms&lt;/prefix&gt;    &lt;firstName&gt;${FIRSTNAME}&lt;/firstName&gt;    &lt;middleName&gt;M&lt;/middleName&gt;    &lt;lastName&gt;${LASTNAME}&lt;/lastName&gt;    &lt;gender&gt;F&lt;/gender&gt;    &lt;address&gt;            &lt;addressLine1&gt;${ADDRESSSTREET}&lt;/addressLine1&gt;            &lt;city&gt;${ADDRESSCITY}&lt;/city&gt;            &lt;state&gt;${ADDRESSSTATE}&lt;/state&gt;            &lt;country&gt;US&lt;/country&gt;            &lt;zip&gt;${ADDRESSZIP}&lt;/zip&gt;    &lt;/address&gt;    &lt;phoneNumbers&gt;            &lt;type&gt;HOME&lt;/type&gt;            &lt;phoneNumber&gt;+${HOMEPHONE}&lt;/phoneNumber&gt;    &lt;/phoneNumbers&gt;    &lt;phoneNumbers&gt;            &lt;type&gt;WORK&lt;/type&gt;            &lt;phoneNumber&gt;000-000-0000&lt;/phoneNumber&gt;    &lt;/phoneNumbers&gt;&lt;/insuredPersons&gt;&lt;vehicles&gt;    &lt;vehicleNumber&gt;1&lt;/vehicleNumber&gt;    &lt;make&gt;${VEHICLEMAKE}&lt;/make&gt;    &lt;model&gt;${VEHICLEMODEL}&lt;/model&gt;    &lt;vehicleIdentificationNumber&gt;${VEHICLEVIN}&lt;/vehicleIdentificationNumber&gt;    &lt;modelYear&gt;${VEHICLEYEAR}&lt;/modelYear&gt;    &lt;vehicleRegistration&gt;${VEHICLEREG}&lt;/vehicleRegistration&gt;    &lt;registrationState&gt;${VEHICLESTATE}&lt;/registrationState&gt;    &lt;coverages&gt;            &lt;coverageCode&gt;GLSS&lt;/coverageCode&gt;            &lt;deductibleAmount&gt;500.00&lt;/deductibleAmount&gt;    &lt;/coverages&gt;&lt;/vehicles&gt;&lt;policyHolderAddress&gt;    &lt;addressLine1&gt;${ADDRESSSTREET}&lt;/addressLine1&gt;    &lt;city&gt;${ADDRESSCITY}&lt;/city&gt;    &lt;state&gt;${ADDRESSSTATE}&lt;/state&gt;    &lt;country&gt;US&lt;/country&gt;    &lt;zip&gt;${ADDRESSZIP}&lt;/zip&gt;&lt;/policyHolderAddress&gt;&lt;/updateNotification&gt;&lt;/LMCoverageUpdateNotification&gt;      &lt;/icov:coverageUpdateNotification&gt;   &lt;/soapenv:Body&gt;&lt;/soapenv:Envelope&gt;</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain"></stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">https://${GV_HOSTNAME_POLICY}/PolicyServicesMediationModuleWeb/sca/CCCoverageUpdateNotificationWSExport</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.monitor">false</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CNG_TP32_Pol_Serv_SafeLite_Cov_Update failed - HTTP Reponse not 200 OK" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="49586">200</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_code</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+          <ResponseAssertion guiclass="AssertionGui" testclass="ResponseAssertion" testname="CNG_TP32_Pol_Serv_SafeLite_Cov_Update failed - HTTP Reponse 200 but unsucessful response returned" enabled="true">
+            <collectionProp name="Asserion.test_strings">
+              <stringProp name="-1395237438">status&gt;Success&lt;/status&gt;</stringProp>
+            </collectionProp>
+            <stringProp name="Assertion.test_field">Assertion.response_data</stringProp>
+            <boolProp name="Assertion.assume_success">false</boolProp>
+            <intProp name="Assertion.test_type">16</intProp>
+          </ResponseAssertion>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>
